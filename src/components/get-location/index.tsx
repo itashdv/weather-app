@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const API_KEY = "0a3b458dba5c7807c022b803f8a82a49";
+const API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 
 const GetLocation = () => {
 
