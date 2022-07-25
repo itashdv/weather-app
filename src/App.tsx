@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
 
-import GetLocation from './components/get-location';
+import CurrentLocation from './components/current-location';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <p>Welcome to Aitash Weather App!</p>
-        <GetLocation />
+        <CurrentLocation />
       </header>
     </div>
   );
