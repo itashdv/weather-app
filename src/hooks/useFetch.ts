@@ -1,20 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-import { Weather } from '../types';
+import { FetchData } from "../types";
 
-type FetchData = {
-  data?: Weather;
-  error?: Error;
-  loading: boolean;
-};
-
-export const useFetch = () => {
+export const useFetch = (url: string | null) => {
   const [status, setStatus] = useState<FetchData>({
     loading: false,
   });
 
   const fetchWeatherData = (url: string) => {
     setStatus({ loading: true });
+
     fetch(url)
       .then((response: any) => response.json())
       .then((data: any) => setStatus({
@@ -31,6 +26,12 @@ export const useFetch = () => {
       }))
       .catch((error: Error) => setStatus({ error, loading: false }));
   };
+
+  useEffect(() => {
+    if (!url) return;
+    
+    fetchWeatherData(url);
+  }, [url]);
   
-  return { ...status, fetchWeatherData };
+  return { ...status };
 };

@@ -1,15 +1,16 @@
 import React from 'react';
 import './App.css';
 
-import CurrentLocation from './components/current-location';
+import { CurrentLocation, SelectedLocation } from './components';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <p>Welcome to Aitash Weather App!</p>
-        <CurrentLocation />
       </header>
+      <CurrentLocation />
+      <SelectedLocation />
     </div>
   );
 }

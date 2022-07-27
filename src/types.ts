@@ -17,3 +17,20 @@ export interface Weather {
   temp_max: number;
   temp_min: number;
 }
+
+export type FetchData = {
+  data?: Weather;
+  error?: Error;
+  loading: boolean;
+}
+
+export type QueryFetchData = {
+  data?: {
+    country: string;
+    latitude: number;
+    longitude: number;
+    name: string;
+  }[];
+  error?: Error;
+  loading: boolean;
+}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { LocationData } from '../types';
 
-import { getLocationUrl } from '../utils/getLocationUrl';
+import { getLocationUrl } from '../utils';
 
 export const useLocation = () => {
   const [locationStatus, setLocationStatus] = useState<LocationData>({
@@ -17,7 +17,7 @@ export const useLocation = () => {
         status: "Geolocation is not supported by your browser!",
       });
     } else {
-      setLocationStatus({ ...locationStatus, status: "Locating..." });
+      setLocationStatus({ ...locationStatus, status: "Getting current location.." });
       setTimeout(() => {
         navigator.geolocation.getCurrentPosition(position => {
           const { latitude, longitude } = position.coords;
