@@ -1,15 +1,3 @@
-export interface ILocation {
-  country?: string;
-  name?: string;
-  url: string;
-}
-
-export interface IFetching {
-  data?: ILocation;
-  error?: Error;
-  loading: boolean;
-}
-
 export interface IWeather {
   feels_like: number;
   humidity: number;
@@ -18,6 +6,18 @@ export interface IWeather {
   temp: number;
   temp_max: number;
   temp_min: number;
+}
+
+export interface ILocation {
+  country?: string;
+  name?: string;
+  url: string;
+  weather?: IWeather;
+}
+
+export interface IFetching {
+  error?: Error;
+  loading: boolean;
 }
 
 export interface IAppContext {

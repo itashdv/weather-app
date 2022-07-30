@@ -1,5 +1,4 @@
 import React, { createContext, useState } from 'react';
-
 import { ILocation, IAppContext } from '../types';
 
 type ProviderProps = {

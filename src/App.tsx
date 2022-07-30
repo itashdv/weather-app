@@ -1,7 +1,8 @@
 import React from 'react';
-import './App.css';
 import { AppProvider } from './context';
-import { CurrentLocation, SelectedLocation } from './components';
+import { CurrentLocation, Search } from './components';
+
+import './App.css';
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
           <p>Welcome to Aitash Weather App!</p>
         </header>
         <CurrentLocation />
-        <SelectedLocation />
+        <Search />
       </div>
     </AppProvider>
   );
