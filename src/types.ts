@@ -1,11 +1,15 @@
-export type LocationData = {
-  status: string | null;
-  url: string | null;
+export interface Location {
+  country?: string;
+  lat: number;
+  lon: number;
+  name?: string;
+  url?: string;
 }
 
-export type LocationUrlData = {
-  latitude: number;
-  longitude: number;
+export interface Fetching {
+  data?: Location;
+  error?: Error;
+  loading: boolean;
 }
 
 export interface Weather {
@@ -16,6 +20,18 @@ export interface Weather {
   temp: number;
   temp_max: number;
   temp_min: number;
+}
+
+
+
+export type LocationData = {
+  status: string | null;
+  url: string | null;
+}
+
+export type LocationUrlData = {
+  latitude: number;
+  longitude: number;
 }
 
 export type FetchData = {
