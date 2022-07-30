@@ -1,39 +1,48 @@
 import React, { useState } from 'react';
 
-import { LocationData } from '../types';
+import { IFetching } from '../types';
 
-import { getLocationUrl } from '../utils';
+import { getLocationUrlByCoords } from '../utils';
 
 export const useLocation = () => {
-  const [locationStatus, setLocationStatus] = useState<LocationData>({
-    status: null,
-    url: null,
+  const [location, setLocation] = useState<IFetching>({
+    loading: false,
   });
 
   const getLocation = () => {
     if (!navigator.geolocation) {
-      setLocationStatus({
-        ...locationStatus,
-        status: "Geolocation is not supported by your browser!",
+      setLocation({
+        ...location,
+        error: {
+          name: 'Not supported',
+          message: 'Geolocation is not supported by your browser!',
+        }
       });
     } else {
-      setLocationStatus({ ...locationStatus, status: "Getting current location.." });
+      setLocation({ loading: true });
+
       setTimeout(() => {
         navigator.geolocation.getCurrentPosition(position => {
           const { latitude, longitude } = position.coords;
-          setLocationStatus({
-            status: null,
-            url: getLocationUrl({ latitude, longitude }),
+
+          setLocation({
+            data: {
+              url: getLocationUrlByCoords(latitude, longitude),
+            },
+            loading: false,
           });
         }, error => {
-          setLocationStatus({
-            ...locationStatus,
-            status: error.message,
+          setLocation({
+            error: {
+              name: 'Geolocation error',
+              message: error.message,
+            },
+            loading: false,
           });
         });
       }, 1000);
     }
   };
 
-  return { ...locationStatus, getLocation };
+  return { ...location, getLocation };
 }

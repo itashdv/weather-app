@@ -1,12 +1,18 @@
-import React, { useEffect } from "react";
-
+import React, { useContext, useEffect } from "react";
 import { useFetch, useLocation } from '../hooks';
-
+import { AppContext } from "../context";
 import { WeatherWidget } from "./shared/WeatherWidget";
 
 export const CurrentLocation = () => {
-  const { getLocation, status, url } = useLocation();
-  const { loading, error, data } = useFetch(url);
+  const { data, error, loading, getLocation } = useLocation();
+
+  const context = useContext(AppContext);
+
+  useEffect(() => {
+    if (data?.url && context?.updateCurrentLocation) {
+      context.updateCurrentLocation(data);
+    }
+  }, [context, data]);
 
   useEffect(() => {
     getLocation();
@@ -14,15 +20,8 @@ export const CurrentLocation = () => {
 
   return (
     <>
-      { status ? (
-        <p>{ status }</p>
-      ) : (
-        <WeatherWidget
-          data={ data }
-          error={ error }
-          loading={ loading }
-        />
-      ) }
+      { loading && <p>Getting your current location..</p> }
+      { context?.currentLocation && <p>{ context.currentLocation.url }</p> }
     </>
-  )
+  );
 };

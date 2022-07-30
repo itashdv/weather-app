@@ -10,8 +10,6 @@ export const SelectedLocation = () => {
 
   const { data, error, loading } = useQueryFetch(url);
 
-  console.log(data);
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCity(event.target.value);
   };

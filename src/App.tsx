@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
-
-import { AppContext } from './context/context';
-
+import { AppProvider } from './context';
 import { CurrentLocation, SelectedLocation } from './components';
 
 function App() {
   return (
-    <AppContext.Provider value={ null }>
+    <AppProvider>
       <div className="App">
         <header className="App-header">
           <p>Welcome to Aitash Weather App!</p>
@@ -15,7 +13,7 @@ function App() {
         <CurrentLocation />
         <SelectedLocation />
       </div>
-    </AppContext.Provider>
+    </AppProvider>
   );
 }
 

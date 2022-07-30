@@ -1,18 +1,16 @@
-export interface Location {
+export interface ILocation {
   country?: string;
-  lat: number;
-  lon: number;
   name?: string;
-  url?: string;
+  url: string;
 }
 
-export interface Fetching {
-  data?: Location;
+export interface IFetching {
+  data?: ILocation;
   error?: Error;
   loading: boolean;
 }
 
-export interface Weather {
+export interface IWeather {
   feels_like: number;
   humidity: number;
   name: string;
@@ -21,6 +19,18 @@ export interface Weather {
   temp_max: number;
   temp_min: number;
 }
+
+export interface IAppContext {
+  currentLocation: ILocation;
+  updateCurrentLocation: (location: ILocation) => void;
+  selectedLocation: ILocation;
+  updateSelectedLocation: (location: ILocation) => void;
+  searchQuery: string;
+  updateSearchQuery: (query: string) => void;
+  queryList: ILocation[];
+  updateQueryList: (list: ILocation[]) => void;
+}
+
 
 
 
@@ -35,7 +45,7 @@ export type LocationUrlData = {
 }
 
 export type FetchData = {
-  data?: Weather;
+  data?: IWeather;
   error?: Error;
   loading: boolean;
 }
