@@ -16,7 +16,13 @@ export interface ILocation {
 }
 
 export interface IFetching {
-  data?: any;
+  data?: ILocation[];
+  error?: Error;
+  loading: boolean;
+}
+
+export interface IFetchingSingle {
+  data?: IWeather;
   error?: Error;
   loading: boolean;
 }

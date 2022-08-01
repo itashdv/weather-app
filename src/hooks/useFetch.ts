@@ -1,23 +1,19 @@
-import React, { useContext, useState, useEffect } from "react";
-import { AppContext } from "../context";
-import { IFetching } from "../types";
+import { useEffect, useState } from "react";
+import { IFetchingSingle } from "../types";
 
 export const useFetch = (url: string) => {
-  const context = useContext(AppContext);
-
-  const [status, setStatus] = useState<IFetching>({
+  const [status, setStatus] = useState<IFetchingSingle>({
     loading: false,
   });
 
-  const fetchWeatherData = (url: string) => {
-    setStatus({ loading: true });
+  useEffect(() => {
+    (() => {
+      setStatus({ loading: true });
 
-    fetch(url)
-      .then((response: any) => response.json())
-      .then((data: any) => {
-        context?.updateCurrentLocation({
-          ...context.currentLocation,
-          weather: {
+      fetch(url)
+        .then((response: any) => response.json())
+        .then((data: any) => setStatus({
+          data: {
             feels_like: data.main.feels_like,
             humidity: data.main.humidity,
             name: data.name,
@@ -26,15 +22,13 @@ export const useFetch = (url: string) => {
             temp_max: data.main.temp_max,
             temp_min: data.main.temp_min,
           },
-        });
-
-        setStatus({ loading: false });
-      })
-      .catch((error: Error) => setStatus({ error, loading: false }));
-  };
-
-  useEffect(() => {
-    fetchWeatherData(url);
+          loading: false,
+        }))
+        .catch((error: Error) => setStatus({
+          error,
+          loading: false,
+        }));
+    })();
   }, [url]);
   
   return { ...status };

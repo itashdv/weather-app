@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { AppContext } from '../../context';
+import React from 'react';
 import { useFetch } from '../../hooks';
 
 type WeatherWidgetProps = {
@@ -7,23 +6,21 @@ type WeatherWidgetProps = {
 }
 
 export const WeatherWidget = ({ url }: WeatherWidgetProps) => {
-  const context = useContext(AppContext);
-
-  const { error, loading } = useFetch(url);
+  const { data, error, loading } = useFetch(url);
 
   return (
     <>
       { loading && <p>Loading weather details..</p> }
       { error && <p className='error'>{ error.message }</p> }
-      { context?.currentLocation.weather && (
+      { data && (
         <>
-          <h4>{ context.currentLocation.weather.name }</h4>
-          <p>Tempreture: { context.currentLocation.weather.temp }</p>
-          <p>Max: { context.currentLocation.weather.temp_max }</p>
-          <p>Min: { context.currentLocation.weather.temp_min }</p>
-          <p>Feels like: { context.currentLocation.weather.feels_like }</p>
-          <p>Humidity: { context.currentLocation.weather.humidity }</p>
-          <p>Pressure: { context.currentLocation.weather.pressure }</p>
+          <h4>{ data.name }</h4>
+          <p>Tempreture: { data.temp }</p>
+          <p>Max: { data.temp_max }</p>
+          <p>Min: { data.temp_min }</p>
+          <p>Feels like: { data.feels_like }</p>
+          <p>Humidity: { data.humidity }</p>
+          <p>Pressure: { data.pressure }</p>
         </>
       ) }
     </>
