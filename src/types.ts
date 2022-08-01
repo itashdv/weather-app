@@ -16,8 +16,14 @@ export interface ILocation {
 }
 
 export interface IFetching {
+  data?: any;
   error?: Error;
   loading: boolean;
+}
+
+export interface ISearch {
+  value: string;
+  query: string | null;
 }
 
 export interface IAppContext {
@@ -29,34 +35,4 @@ export interface IAppContext {
   updateSearchQuery: (query: string) => void;
   queryList: ILocation[];
   updateQueryList: (list: ILocation[]) => void;
-}
-
-
-
-
-export type LocationData = {
-  status: string | null;
-  url: string | null;
-}
-
-export type LocationUrlData = {
-  latitude: number;
-  longitude: number;
-}
-
-export type FetchData = {
-  data?: IWeather;
-  error?: Error;
-  loading: boolean;
-}
-
-export type QueryFetchData = {
-  data?: {
-    country: string;
-    latitude: number;
-    longitude: number;
-    name: string;
-  }[];
-  error?: Error;
-  loading: boolean;
 }

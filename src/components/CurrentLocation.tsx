@@ -15,7 +15,7 @@ export const CurrentLocation = () => {
   return (
     <>
       { loading && <p>Getting your current location..</p> }
-      { error && <p className='error'>{ error.message }</p> }
+      { error && <p className="error">{ error.message }</p> }
       { context?.currentLocation.url && (
         <WeatherWidget url={ context.currentLocation.url } />
       ) }

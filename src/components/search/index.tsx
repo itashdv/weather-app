@@ -1,24 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { ISearch } from '../../types';
+import { getSearchQuery } from '../../utils';
+
+import { QueryList } from './QueryList';
 
 export const Search = () => {
-  const [value, setValue] = useState<string>('');
+  const [state, setState] = useState<ISearch>({
+    value: '',
+    query: null,
+  });
+
+  const { value, query } = state;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => 
-    setValue(event.target.value);
-
-  useEffect(() => {
-    if (!value) return;
-
-    
-  }, [value]);
+    setState({
+      value: event.target.value,
+      query: event.target.value
+        ? getSearchQuery(event.target.value)
+        : null,
+    });
 
   return (
-    <input
-      name="city"
-      placeholder="Search for a location.."
-      type="text"
-      value={ value }
-      onChange={ handleChange }
-    />
+    <>
+      <input
+        name="location"
+        placeholder="Search for a location.."
+        type="text"
+        value={ value }
+        onChange={ handleChange }
+      />
+      { query && <QueryList query={ query } /> }
+    </>
   );
 }

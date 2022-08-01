@@ -5,3 +5,13 @@
 .error {
   color: red;
 }
+
+.linkButton {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  margin: 0!important;
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+}
