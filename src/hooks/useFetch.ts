@@ -32,4 +32,4 @@ export const useFetch = (url: string) => {
   }, [url]);
   
   return { ...status };
-};
+}

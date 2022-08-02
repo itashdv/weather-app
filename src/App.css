@@ -6,6 +6,11 @@
   color: red;
 }
 
+.button {
+  cursor: pointer;
+  margin-left: 16px;
+}
+
 .linkButton {
   background: none!important;
   border: none;

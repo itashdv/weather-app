@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../../context';
+import { ILocation } from '../../types';
 import { useQueryFetch } from '../../hooks';
+
+import { LinkButton } from '../shared';
 
 type Props = {
   query: string;
+  reset: () => void;
 }
 
-export const QueryList = ({ query }: Props) => {
+export const QueryList = ({ query, reset }: Props) => {
+  const context = useContext(AppContext);
+
   const { data, error, loading } = useQueryFetch(query);
+
+  const handleClick = (location: ILocation) => {
+    if (!context?.locations || !context.addLocation) return;
+    context.addLocation(location);
+    reset();
+  }
 
   return (
     <>
@@ -16,13 +29,14 @@ export const QueryList = ({ query }: Props) => {
         <ul>
           { data.map((location: any) => (
             <li key={ location.url }>
-              <button className="linkButton" type="button">
-                {location.name} / { location.country }
-              </button>
+              <LinkButton
+                onClick={ () => handleClick(location) }
+                text={`${location.name} / ${ location.country }`}
+              />
             </li>
           )) }
         </ul>
       ) }
     </>
-  )
+  );
 }

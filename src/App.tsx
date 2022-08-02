@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppProvider } from './context';
-import { CurrentLocation, Search } from './components';
+import { CurrentLocation, Search, SelectedLocations } from './components';
 
 import './App.css';
 
@@ -13,6 +13,7 @@ function App() {
         </header>
         <CurrentLocation />
         <Search />
+        <SelectedLocations />
       </div>
     </AppProvider>
   );

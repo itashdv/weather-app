@@ -33,12 +33,7 @@ export interface ISearch {
 }
 
 export interface IAppContext {
-  currentLocation: ILocation;
-  updateCurrentLocation: (location: ILocation) => void;
-  selectedLocation: ILocation;
-  updateSelectedLocation: (location: ILocation) => void;
-  searchQuery: string;
-  updateSearchQuery: (query: string) => void;
-  queryList: ILocation[];
-  updateQueryList: (list: ILocation[]) => void;
+  locations: ILocation[];
+  addLocation: (location: ILocation) => void;
+  removeLocation: (name: string) => void;
 }

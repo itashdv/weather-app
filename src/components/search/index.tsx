@@ -12,6 +12,11 @@ export const Search = () => {
 
   const { value, query } = state;
 
+  const reset = () => setState({
+    value: '',
+    query: null
+  });
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setState({
       value: event.target.value,
@@ -29,7 +34,12 @@ export const Search = () => {
         value={ value }
         onChange={ handleChange }
       />
-      { query && <QueryList query={ query } /> }
+      { query && (
+        <QueryList
+          query={ query }
+          reset={ reset }
+        />
+      ) }
     </>
   );
 }
