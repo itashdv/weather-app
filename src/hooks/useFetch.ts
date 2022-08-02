@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { IFetchingSingle } from "../types";
+import { IWeatherFetch } from "../types";
 
 export const useFetch = (url: string) => {
-  const [status, setStatus] = useState<IFetchingSingle>({
+  const [status, setStatus] = useState<IWeatherFetch>({
     loading: false,
   });
 

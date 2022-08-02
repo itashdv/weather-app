@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
-import { IFetching } from '../types';
+import { ILocationFetch } from '../types';
 import { getLocationFields } from '../utils';
 
 export const useQueryFetch = (url: string) => {
-  const [status, setStatus] = useState<IFetching>({
+  const [status, setStatus] = useState<ILocationFetch>({
     loading: false,
   });
 
   useEffect(() => {
-    const fetchQueryData = (url: string) => {
+    (() => {
       setStatus({ loading: true });
   
       fetch(url)
@@ -21,9 +21,7 @@ export const useQueryFetch = (url: string) => {
           error,
           loading: false,
         }));
-    };
-
-    fetchQueryData(url);
+    })();
   }, [url]);
 
   return { ...status };

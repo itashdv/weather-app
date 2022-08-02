@@ -15,13 +15,13 @@ export interface ILocation {
   weather?: IWeather;
 }
 
-export interface IFetching {
+export interface ILocationFetch {
   data?: ILocation[];
   error?: Error;
   loading: boolean;
 }
 
-export interface IFetchingSingle {
+export interface IWeatherFetch {
   data?: IWeather;
   error?: Error;
   loading: boolean;

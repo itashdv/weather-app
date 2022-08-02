@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
-import { IFetching } from '../types';
+import { ILocationFetch } from '../types';
 import { getLocationUrlByCoords } from '../utils';
 
 export const useLocation = () => {
-  const [status, setStatus] = useState<IFetching>({
+  const [status, setStatus] = useState<ILocationFetch>({
     loading: false,
   });
 
   useEffect(() => {
-    const getLocation = () => {
+    (() => {
       if (!navigator.geolocation) {
         setStatus(status => ({
           ...status,
@@ -39,9 +39,7 @@ export const useLocation = () => {
           });
         }, 1000);
       }
-    };
-
-    getLocation();
+    })();
   }, []);
 
   return { ...status };

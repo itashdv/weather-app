@@ -12,7 +12,7 @@ export const Search = () => {
 
   const { value, query } = state;
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setState({
       value: event.target.value,
       query: event.target.value

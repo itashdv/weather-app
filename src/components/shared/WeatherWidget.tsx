@@ -1,11 +1,11 @@
 import React from 'react';
 import { useFetch } from '../../hooks';
 
-type WeatherWidgetProps = {
+type Props = {
   url: string;
 }
 
-export const WeatherWidget = ({ url }: WeatherWidgetProps) => {
+export const WeatherWidget = ({ url }: Props) => {
   const { data, error, loading } = useFetch(url);
 
   return (
