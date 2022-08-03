@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { API_KEY, CITY_LIMIT } from "../constants";
 
 const getLocationUrlByCoords = (lat: number, lon: number) =>
-  `https://api.openweathermap.org/data/2.5/weather?lat=${ lat }&lon=${ lon }&appid=${ API_KEY }`;
+  `https://api.openweathermap.org/data/2.5/weather?lat=${ lat }&lon=${ lon }&appid=${ API_KEY }&units=metric`;
 
 const getSearchQuery = (query: string) =>
   `http://api.openweathermap.org/geo/1.0/direct?q=${ query }&limit=${ CITY_LIMIT }&appid=${ API_KEY }`;

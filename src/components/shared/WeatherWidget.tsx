@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ILocation } from '../../types';
 import { useFetch } from '../../hooks';
 
-import { Button, LinkButton } from '../shared';
+import { Button, LinkButton, Weather } from '../shared';
 
 type Props = {
   mode: 'list' | 'full';
@@ -16,7 +16,7 @@ export const WeatherWidget = ({ mode, onClose, location }: Props) => {
   const [widgetMode, setWidgetMode] =useState<'list' | 'full'>(mode);
 
   return (
-    <>
+    <div>
       { loading && <p>Loading weather details..</p> }
       { error && <p className='error'>{ error.message }</p> }
       { data && (
@@ -40,6 +40,7 @@ export const WeatherWidget = ({ mode, onClose, location }: Props) => {
             </div>
           ) : (
             <>
+              <Weather />
               <h4>{ data.name }</h4>
               <p>Temperature: { data.temp }</p>
               <p>Max: { data.temp_max }</p>
@@ -55,6 +56,6 @@ export const WeatherWidget = ({ mode, onClose, location }: Props) => {
           ) }
         </>
       ) }
-    </>
+    </div>
   );
 };
