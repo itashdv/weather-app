@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { API_KEY, CITY_LIMIT } from "../constants";
 
 const getLocationUrlByCoords = (lat: number, lon: number) =>
@@ -8,13 +9,30 @@ const getSearchQuery = (query: string) =>
 
 const getLocationFields = (locations: any) =>
   locations.map((location: any) => ({
+    id: uuidv4(),
     country: location.country,
     name: location.name,
     url: getLocationUrlByCoords(location.lat, location.lon),
   }));
 
+const populateCurrentLocation = (lat: number, lon: number) => (
+  [{ id: uuidv4(), url: getLocationUrlByCoords(lat, lon) }]
+);
+
+const setWeather = (data: any) => ({
+  feels_like: data.main.feels_like,
+  humidity: data.main.humidity,
+  name: data.name,
+  pressure: data.main.pressure,
+  temp: data.main.temp,
+  temp_max: data.main.temp_max,
+  temp_min: data.main.temp_min,
+});
+
 export {
   getLocationUrlByCoords,
   getSearchQuery,
-  getLocationFields
+  getLocationFields,
+  populateCurrentLocation,
+  setWeather,
 }

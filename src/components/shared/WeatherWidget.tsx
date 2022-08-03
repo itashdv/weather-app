@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
+import { ILocation } from '../../types';
 import { useFetch } from '../../hooks';
 
 import { Button, LinkButton } from '../shared';
 
 type Props = {
   mode: 'list' | 'full';
-  onClose?: (name: string) => void;
-  url: string;
+  onClose?: (id: string) => void;
+  location: ILocation;
 }
 
-export const WeatherWidget = ({ mode, onClose, url }: Props) => {
-  const { data, error, loading } = useFetch(url);
+export const WeatherWidget = ({ mode, onClose, location }: Props) => {
+  const { data, error, loading } = useFetch(location.url);
 
   const [widgetMode, setWidgetMode] =useState<'list' | 'full'>(mode);
 
@@ -24,7 +25,7 @@ export const WeatherWidget = ({ mode, onClose, url }: Props) => {
             <div>
               <LinkButton
                 text={`
-                  ${ data.name } / 
+                  ${ location.name } / 
                   Temp.: ${ data.temp } / 
                   Feels like: ${ data.feels_like }
                 `}
@@ -33,7 +34,7 @@ export const WeatherWidget = ({ mode, onClose, url }: Props) => {
               { onClose && (
                 <Button
                   text={ `remove` }
-                  onClick={ () => onClose(data.name) }
+                  onClick={ () => onClose(location.id) }
                 />
               ) }
             </div>

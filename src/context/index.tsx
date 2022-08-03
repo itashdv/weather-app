@@ -13,10 +13,8 @@ export const AppProvider: React.FC<ProviderProps> = ({ children }) => {
   const addLocation = (location: ILocation) =>
     setLocations((locations) => ([...locations, location]));
 
-  const removeLocation = (name: string) => {
-    console.log(name);
-    setLocations((locations) => locations.filter(l => l.name !== name));
-  }
+  const removeLocation = (id: string) =>
+    setLocations((locations) => locations.filter(l => l.id !== id));
 
   return (
     <AppContext.Provider value={{

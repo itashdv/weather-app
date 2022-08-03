@@ -12,7 +12,7 @@ export const CurrentLocation = () => {
       { data && (
         <WeatherWidget
           mode={ 'full' }
-          url={ data[0].url }
+          location={ data[0] }
         />
       ) }
     </>

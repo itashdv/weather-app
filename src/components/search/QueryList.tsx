@@ -27,8 +27,8 @@ export const QueryList = ({ query, reset }: Props) => {
       { error && <p className="error">{ error.message }</p> }
       { data && (
         <ul>
-          { data.map((location: any) => (
-            <li key={ location.url }>
+          { data.map((location: ILocation) => (
+            <li key={ location.id }>
               <LinkButton
                 onClick={ () => handleClick(location) }
                 text={`${location.name} / ${ location.country }`}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ILocationFetch } from '../types';
-import { getLocationUrlByCoords } from '../utils';
+import { populateCurrentLocation } from '../utils';
 
 export const useLocation = () => {
   const [status, setStatus] = useState<ILocationFetch>({
@@ -25,7 +25,7 @@ export const useLocation = () => {
             const { latitude, longitude } = position.coords;
   
             setStatus({
-              data: [{ url: getLocationUrlByCoords(latitude, longitude) }],
+              data: populateCurrentLocation(latitude, longitude),
               loading: false,
             });
           }, error => {

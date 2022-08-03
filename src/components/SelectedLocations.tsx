@@ -10,10 +10,10 @@ export const SelectedLocations = () => {
     <>
       { context?.locations && context.locations.map(location => (
         <WeatherWidget
-          key={ location.url }
+          key={ location.id }
           mode={ 'list' }
           onClose={ context.removeLocation }
-          url={ location.url }
+          location={ location }
         />
       )) }
     </>

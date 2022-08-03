@@ -9,9 +9,10 @@ export interface IWeather {
 }
 
 export interface ILocation {
+  id: string;
+  url: string;
   country?: string;
   name?: string;
-  url: string;
   weather?: IWeather;
 }
 
@@ -35,5 +36,5 @@ export interface ISearch {
 export interface IAppContext {
   locations: ILocation[];
   addLocation: (location: ILocation) => void;
-  removeLocation: (name: string) => void;
+  removeLocation: (id: string) => void;
 }
