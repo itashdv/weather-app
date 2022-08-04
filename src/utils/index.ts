@@ -25,8 +25,9 @@ const setWeatherData = (data: any) => ({
   temp_max: Math.round(data.main.temp_max),
   temp_min: Math.round(data.main.temp_min),
   feels_like: Math.round(data.main.feels_like),
-  description: data.weather[0].description,
+  description: data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1),
   wind: Math.round(data.wind.speed * 10) / 10,
+  iconUrl: `http://openweathermap.org/img/wn/${ data.weather[0].icon }@2x.png`,
 });
 
 export {

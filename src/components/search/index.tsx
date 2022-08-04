@@ -26,8 +26,9 @@ export const Search = () => {
     });
 
   return (
-    <>
+    <div className="search-box">
       <input
+        className="search-input"
         name="location"
         placeholder="Search for a location.."
         type="text"
@@ -40,6 +41,6 @@ export const Search = () => {
           reset={ reset }
         />
       ) }
-    </>
+    </div>
   );
 }

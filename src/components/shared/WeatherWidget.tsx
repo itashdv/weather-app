@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ILocation } from '../../types';
 import { useFetch } from '../../hooks';
 
-import { Button, LinkButton, Weather } from '../shared';
+import { Button, LinkButton } from '../shared';
 
 type Props = {
   mode: 'list' | 'full';
@@ -42,7 +42,6 @@ export const WeatherWidget = ({ mode, onClose, location }: Props) => {
             </div>
           ) : (
             <>
-              <Weather />
               <h4>{ data.name }</h4>
               <p>Temperature: { data.temp }</p>
               <p>Max: { data.temp_max }</p>

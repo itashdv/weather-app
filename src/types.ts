@@ -6,6 +6,7 @@ export interface IWeather {
   feels_like: number;
   description: string;
   wind: number;
+  iconUrl: string;
 }
 
 export interface ILocation {

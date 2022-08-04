@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context';
 
-import { WeatherWidget } from './shared';
+import { Location } from './Location';
 
 export const SelectedLocations = () => {
   const context = useContext(AppContext);
@@ -9,11 +9,13 @@ export const SelectedLocations = () => {
   return (
     <>
       { context?.locations && context.locations.map(location => (
-        <WeatherWidget
+        <Location
           key={ location.id }
-          mode={ 'list' }
-          onClose={ context.removeLocation }
-          location={ location }
+          location={{
+            id: location.id,
+            url: location.url
+          }}
+          onRemove={ context.removeLocation }
         />
       )) }
     </>

@@ -13,14 +13,10 @@ export const useFetch = (url: string) => {
 
       fetch(url)
         .then((response: any) => response.json())
-        .then((data: any) => {
-          console.log(data);
-
-          setStatus({
-            data: setWeatherData(data),
-            loading: false,
-          });
-        })
+        .then((data: any) => setStatus({
+          data: setWeatherData(data),
+          loading: false,
+        }))
         .catch((error: Error) => setStatus({
           error,
           loading: false,

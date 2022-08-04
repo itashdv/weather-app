@@ -9,14 +9,14 @@ type Props = {
 }
 
 const StyledLinkButton = styled.button<Props>`
-  color: ${ props => props.color };
-  font-size: ${ props => props.size }px;
   background: none!important;
   border: none;
-  padding: 4px;
-  margin: 0!important;
-  text-decoration: underline;
+  color: ${ props => props.color };
   cursor: pointer;
+  font-size: ${ props => props.size }px;
+  margin: 0!important;
+  padding: 4px;
+  text-decoration: underline;
 `;
 
 export const LinkButton = ({ color, onClick, size, text }: Props) =>
