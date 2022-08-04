@@ -24,12 +24,14 @@ export const WeatherWidget = ({ mode, onClose, location }: Props) => {
           { widgetMode === 'list' ? (
             <div>
               <LinkButton
+                color={ '#069' }
+                onClick={ () => setWidgetMode('full') }
+                size={ 16 }
                 text={`
                   ${ location.name } / 
                   Temp.: ${ data.temp } / 
                   Feels like: ${ data.feels_like }
                 `}
-                onClick={ () => setWidgetMode('full') }
               />
               { onClose && (
                 <Button
@@ -46,11 +48,13 @@ export const WeatherWidget = ({ mode, onClose, location }: Props) => {
               <p>Max: { data.temp_max }</p>
               <p>Min: { data.temp_min }</p>
               <p>Feels like: { data.feels_like }</p>
-              <p>Humidity: { data.humidity }</p>
-              <p>Pressure: { data.pressure }</p>
+              <p>Description: { data.description }</p>
+              <p>Wind: { data.wind } km/h</p>
               <LinkButton
-                text={ 'Minimize' }
+                color={ '#069' }
                 onClick={ () => setWidgetMode('list') }
+                size={ 16 }
+                text={ 'Minimize' }
               />
             </>
           ) }

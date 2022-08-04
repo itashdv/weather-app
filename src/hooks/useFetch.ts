@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { IWeatherFetch } from "../types";
-import { setWeather } from "../utils";
+import { setWeatherData } from "../utils";
 
 export const useFetch = (url: string) => {
   const [status, setStatus] = useState<IWeatherFetch>({
@@ -17,7 +17,7 @@ export const useFetch = (url: string) => {
           console.log(data);
 
           setStatus({
-            data: setWeather(data),
+            data: setWeatherData(data),
             loading: false,
           });
         })

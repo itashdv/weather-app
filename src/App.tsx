@@ -9,7 +9,7 @@ function App() {
     <AppProvider>
       <div className="App">
         <header className="App-header">
-          <p>Welcome to Aitash Weather App!</p>
+          <p>Current location:</p>
         </header>
         <CurrentLocation />
         <Search />

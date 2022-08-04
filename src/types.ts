@@ -1,11 +1,11 @@
 export interface IWeather {
-  feels_like: number;
-  humidity: number;
   name: string;
-  pressure: number;
   temp: number;
   temp_max: number;
   temp_min: number;
+  feels_like: number;
+  description: string;
+  wind: number;
 }
 
 export interface ILocation {

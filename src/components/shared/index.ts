@@ -4,6 +4,8 @@ import { WeatherWidget } from "./WeatherWidget";
 import { Weather } from "./Weather";
 import { Text } from "./Text";
 import { Heading } from "./Heading";
+import { Image } from "./Image";
+import { Footer } from './Footer';
 
 export {
   Button,
@@ -12,4 +14,6 @@ export {
   Weather,
   Text,
   Heading,
+  Image,
+  Footer,
 }

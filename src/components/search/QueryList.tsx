@@ -30,7 +30,9 @@ export const QueryList = ({ query, reset }: Props) => {
           { data.map((location: ILocation) => (
             <li key={ location.id }>
               <LinkButton
+                color={ '#069' }
                 onClick={ () => handleClick(location) }
+                size={ 16 }
                 text={`${location.name} / ${ location.country }`}
               />
             </li>

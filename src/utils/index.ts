@@ -19,14 +19,14 @@ const populateCurrentLocation = (lat: number, lon: number) => (
   [{ id: uuidv4(), url: getLocationUrlByCoords(lat, lon) }]
 );
 
-const setWeather = (data: any) => ({
-  feels_like: data.main.feels_like,
-  humidity: data.main.humidity,
+const setWeatherData = (data: any) => ({
   name: data.name,
-  pressure: data.main.pressure,
-  temp: data.main.temp,
-  temp_max: data.main.temp_max,
-  temp_min: data.main.temp_min,
+  temp: Math.round(data.main.temp),
+  temp_max: Math.round(data.main.temp_max),
+  temp_min: Math.round(data.main.temp_min),
+  feels_like: Math.round(data.main.feels_like),
+  description: data.weather[0].description,
+  wind: Math.round(data.wind.speed * 10) / 10,
 });
 
 export {
@@ -34,5 +34,5 @@ export {
   getSearchQuery,
   getLocationFields,
   populateCurrentLocation,
-  setWeather,
+  setWeatherData,
 }

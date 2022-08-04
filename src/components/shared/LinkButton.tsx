@@ -1,15 +1,30 @@
 import React from 'react';
+import styled from 'styled-components';
 
 type Props = {
-  text: string;
+  color: string;
   onClick: () => void;
+  size: number;
+  text?: string;
 }
 
-export const LinkButton = ({ text, onClick }: Props) =>
-  <button
-    className="linkButton"
-    type="button"
+const StyledLinkButton = styled.button<Props>`
+  color: ${ props => props.color };
+  font-size: ${ props => props.size }px;
+  background: none!important;
+  border: none;
+  padding: 4px;
+  margin: 0!important;
+  text-decoration: underline;
+  cursor: pointer;
+`;
+
+export const LinkButton = ({ color, onClick, size, text }: Props) =>
+  <StyledLinkButton
+    color={ color }
     onClick={ onClick }
+    size={ size }
+    type="button"
   >
     { text }
-  </button>
+  </StyledLinkButton>
