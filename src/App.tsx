@@ -4,6 +4,7 @@ import { AppProvider } from './context';
 
 import {
   CurrentLocation,
+  Header,
   Search,
   SelectedLocations
 } from './components';
@@ -19,6 +20,7 @@ function App() {
   return (
     <AppProvider>
       <StyledApp>
+        <Header />
         <Search />
         <CurrentLocation />
         <SelectedLocations />
