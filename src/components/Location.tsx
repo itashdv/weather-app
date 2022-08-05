@@ -21,13 +21,13 @@ export const Location = ({ location, onRemove }: Props) => {
   return (
     <>
       { loading && (
-        <Text color={ '#000' } size={ 16 }>
+        <Text color={ '#000' } size={ '16px' }>
           Loading current location..
         </Text>
       ) }
 
       { error && (
-        <Text color={ 'red' } size={ 16 }>
+        <Text color={ 'red' } size={ '16px' }>
           { error.message }
         </Text>
       ) }

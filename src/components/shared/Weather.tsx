@@ -46,21 +46,21 @@ export const Weather: React.FC = () => {
               13&deg;C
             </Heading>
           ) }
-          <Text color={ '#FFF' } size={ !minimized ? 20 : 14 }>
+          <Text color={ '#FFF' } size={ !minimized ? '20px' : '14px' }>
             Broken clouds
           </Text>
           { !minimized && (
             <>
-              <Text color={ '#FFF' } size={ 16 }>
+              <Text color={ '#FFF' } size={ '16px' }>
                 Feels like: 12&deg;C
               </Text>
-              <Text color={ '#FFF' } size={ 16 }>
+              <Text color={ '#FFF' } size={ '16px' }>
                 Min. temp: 9&deg;C
               </Text>
-              <Text color={ '#FFF' } size={ 16 }>
+              <Text color={ '#FFF' } size={ '16px' }>
                 Max. temp: 15&deg;C
               </Text>
-              <Text color={ '#FFF' } size={ 16 }>
+              <Text color={ '#FFF' } size={ '16px' }>
                 Wind: 1.8 km/h
               </Text>
             </>

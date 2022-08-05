@@ -1,47 +1,28 @@
 import React from 'react';
+import styled from 'styled-components';
 import { AppProvider } from './context';
-import { useLocation } from './hooks';
-
-import { Text } from './components/shared';
 
 import {
-  Location,
+  CurrentLocation,
   Search,
   SelectedLocations
 } from './components';
 
+// remove App.css
 import './App.css';
 
-function App() {
-  const { data, error, loading } = useLocation();
+const StyledApp = styled.div`
+  border: 1px solid blue;
+`;
 
+function App() {
   return (
     <AppProvider>
-      <div>
-        <header className="App-header">
-          <p>Current location:</p>
-
-          { loading && (
-            <Text color={ '#000' } size={ 16 }>
-              Getting your current location..
-            </Text>
-          ) }
-
-          { error && (
-            <Text color={ 'red' } size={ 16 }>
-              { error.message }
-            </Text>
-          ) }
-
-          { data && (
-            <Location location={ data[0] } />
-          ) }
-        </header>
-
+      <StyledApp>
         <Search />
-
+        <CurrentLocation />
         <SelectedLocations />
-      </div>
+      </StyledApp>
     </AppProvider>
   );
 }
