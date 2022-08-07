@@ -18,7 +18,7 @@ export const WeatherWidget = ({ mode, onClose, location }: Props) => {
   return (
     <div>
       { loading && <p>Loading weather details..</p> }
-      { error && <p className='error'>{ error.message }</p> }
+      { error && <p>{ error.message }</p> }
       { data && (
         <>
           { widgetMode === 'list' ? (

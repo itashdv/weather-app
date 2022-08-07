@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+
 import { ISearch } from '../../types';
 import { getSearchQuery } from '../../utils';
+import { TextInput } from '../shared';
 
-import { QueryList } from './QueryList';
+const StyledSearch = styled.nav`
+  padding: 4px;
+  width: 100%;
+`;
 
 export const Search = () => {
   const [state, setState] = useState<ISearch>({
@@ -26,20 +32,13 @@ export const Search = () => {
     });
 
   return (
-    <div>
-      <input
-        name="location"
-        placeholder="Search for a location.."
-        type="text"
+    <StyledSearch>
+      <TextInput
+        name={ 'location' }
+        placeholder={ 'Search for location..' }
         value={ value }
         onChange={ handleChange }
       />
-      { query && (
-        <QueryList
-          query={ query }
-          reset={ reset }
-        />
-      ) }
-    </div>
+    </StyledSearch>
   );
 }

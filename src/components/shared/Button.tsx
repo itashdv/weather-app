@@ -7,7 +7,6 @@ type Props = {
 
 export const Button = ({ text, onClick }: Props) =>
   <button
-    className="button"
     type="button"
     onClick={ onClick }
   >

@@ -9,11 +9,11 @@ import {
   SelectedLocations
 } from './components';
 
-// remove App.css
-import './App.css';
-
 const StyledApp = styled.div`
-  border: 1px solid blue;
+  margin-left: auto;
+  margin-right: auto;
+  width: 380px;
+  // border: 1px solid blue;
 `;
 
 function App() {

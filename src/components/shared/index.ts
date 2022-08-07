@@ -7,6 +7,9 @@ import { Text } from './Text';
 import { Heading } from './Heading';
 import { Image } from './Image';
 import { Footer } from './Footer';
+import { TextInput } from './TextInput';
+import { Loader } from './Loader';
+import { List } from './list';
 
 export {
   Button,
@@ -17,4 +20,7 @@ export {
   Heading,
   Image,
   Footer,
+  TextInput,
+  Loader,
+  List,
 }

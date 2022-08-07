@@ -1,5 +1,5 @@
 import { CurrentLocation } from "./CurrentLocation";
-import { Header } from "./Header";
+import { Header } from "./header";
 import { Location } from "./Location";
 import { Search } from "./search";
 import { SelectedLocations } from "./SelectedLocations";

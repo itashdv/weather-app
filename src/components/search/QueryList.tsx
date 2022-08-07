@@ -24,7 +24,7 @@ export const QueryList = ({ query, reset }: Props) => {
   return (
     <>
       { loading && <p>Loading list of locations..</p> }
-      { error && <p className="error">{ error.message }</p> }
+      { error && <p>{ error.message }</p> }
       { data && (
         <ul>
           { data.map((location: ILocation) => (
