@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Text } from '../shared';
-import { Search } from './Search';
 
 const StyledHeader = styled.header`
   // border: 2px solid red;
@@ -18,7 +17,6 @@ export const Header: React.FC = () => {
       >
         Welcome to Weather App!
       </Text>
-      <Search />
     </StyledHeader>
   );
 }

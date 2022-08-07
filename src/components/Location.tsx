@@ -6,13 +6,14 @@ import { Text, Weather } from "./shared";
 type Props = {
   location: {
     id: string;
+    name?: string;
     url: string;
   },
   onRemove?: (id: string) => void;
 }
 
 export const Location = ({ location, onRemove }: Props) => {
-  const { id, url } = location;
+  const { id, name, url } = location;
 
   const { data, error, loading } = useFetch(url);
 
@@ -39,7 +40,7 @@ export const Location = ({ location, onRemove }: Props) => {
           iconUrl={ data.iconUrl }
           max={ data.temp_max }
           min={ data.temp_min }
-          name={ data.name }
+          name={ name ? name : data.name }
           onRemove={ removeLocation }
           temp={ data.temp }
           wind={ data.wind }

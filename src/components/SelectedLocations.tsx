@@ -13,6 +13,7 @@ export const SelectedLocations = () => {
           key={ location.id }
           location={{
             id: location.id,
+            name: location.name,
             url: location.url
           }}
           onRemove={ context.removeLocation }

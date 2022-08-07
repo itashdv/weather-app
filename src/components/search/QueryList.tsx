@@ -1,44 +1,62 @@
 import React, { useContext } from 'react';
+import styled from 'styled-components';
+
 import { AppContext } from '../../context';
 import { ILocation } from '../../types';
 import { useQueryFetch } from '../../hooks';
 
-import { LinkButton } from '../shared';
+import { List, Loader, Text } from '../shared';
+
+const StyledQueryList = styled.div`
+  position: relative;
+`;
+
+const StyledListHolder = styled.div`
+  position: absolute;
+  width: 100%;
+  background: #fff;
+`;
 
 type Props = {
   query: string;
   reset: () => void;
 }
 
-export const QueryList = ({ query, reset }: Props) => {
-  const context = useContext(AppContext);
+export const QueryList = React.memo(({ query, reset }: Props) => {
+  const { addLocation } = useContext(AppContext);
 
   const { data, error, loading } = useQueryFetch(query);
 
-  const handleClick = (location: ILocation) => {
-    if (!context?.locations || !context.addLocation) return;
-    context.addLocation(location);
+  const onClick = (location: ILocation) => {
+    addLocation(location);
     reset();
   }
 
   return (
-    <>
-      { loading && <p>Loading list of locations..</p> }
-      { error && <p>{ error.message }</p> }
-      { data && (
-        <ul>
-          { data.map((location: ILocation) => (
-            <li key={ location.id }>
-              <LinkButton
-                color={ '#069' }
-                onClick={ () => handleClick(location) }
-                size={ 16 }
-                text={`${location.name} / ${ location.country }`}
-              />
-            </li>
-          )) }
-        </ul>
+    <StyledQueryList>
+      { loading && (
+        <Loader
+          height={ '6px' }
+          loading={ loading }
+          margin={ '4px' }
+        />
       ) }
-    </>
+      { error && (
+        <Text
+          color={ 'red' }
+          size={ '16px' }
+        >
+          { error.message }
+        </Text>
+      ) }
+      { data && (
+        <StyledListHolder>
+          <List
+            list={ data }
+            onClick={ onClick }
+          />
+        </StyledListHolder>
+      ) }
+    </StyledQueryList>
   );
-}
+});

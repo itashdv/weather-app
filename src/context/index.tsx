@@ -5,7 +5,11 @@ type ProviderProps = {
   children: React.ReactNode;
 }
 
-export const AppContext = createContext<IAppContext | null>(null);
+export const AppContext = createContext<IAppContext>({
+  locations: [],
+  addLocation: () => {},
+  removeLocation: () => {},
+});
 
 export const AppProvider: React.FC<ProviderProps> = ({ children }) => {
   const [locations, setLocations] = useState<ILocation[]>([]);

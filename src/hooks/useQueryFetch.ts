@@ -13,18 +13,16 @@ export const useQueryFetch = (url: string) => {
     (() => {
       setStatus({ loading: true });
 
-      setTimeout(() => {
-        fetch(url)
-          .then((response: any) => response.json())
-          .then((data: any) => setStatus({
-            data: getLocationFields(data),
-            loading: false,
-          }))
-          .catch((error: Error) => setStatus({
-            error,
-            loading: false,
-          }));
-      }, 3000);
+      fetch(url)
+        .then((response: any) => response.json())
+        .then((data: any) => setStatus({
+          data: getLocationFields(data),
+          loading: false,
+        }))
+        .catch((error: Error) => setStatus({
+          error,
+          loading: false,
+        }));
     })();
   }, [url]);
 

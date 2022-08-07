@@ -1,36 +1,42 @@
-import React, { useState } from 'react';
-import { ISearch } from '../../types';
-import { getSearchQuery } from '../../utils';
+import React, { useCallback, useState } from 'react';
+import styled from 'styled-components';
 
+import { getSearchQuery } from '../../utils';
+import { TextInput } from '../shared';
 import { QueryList } from './QueryList';
 
+const StyledSearch = styled.nav`
+  padding: 4px;
+  width: 100%;
+`;
+
 export const Search = () => {
-  const [state, setState] = useState<ISearch>({
-    value: '',
-    query: null,
-  });
+  const [value, setValue] = useState<string>('');
+  const [query, setQuery] = useState<string>('');
 
-  const { value, query } = state;
+  let searchTimeout: ReturnType<typeof setTimeout> = setTimeout(() => '', 500);
 
-  const reset = () => setState({
-    value: '',
-    query: null
-  });
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setState({
-      value: event.target.value,
-      query: event.target.value
-        ? getSearchQuery(event.target.value)
-        : null,
-    });
+    clearTimeout(searchTimeout);
+
+    searchTimeout = setTimeout(() => {
+      setQuery(event.target.value && getSearchQuery(event.target.value));
+    }, 1000);
+  }
+
+  const reset = useCallback(() => {
+    setValue('');
+    
+    setQuery('');
+  }, [setValue, setQuery]);
 
   return (
-    <div>
-      <input
-        name="location"
-        placeholder="Search for a location.."
-        type="text"
+    <StyledSearch>
+      <TextInput
+        name={ 'location' }
+        placeholder={ 'Search for location..' }
         value={ value }
         onChange={ handleChange }
       />
@@ -40,6 +46,6 @@ export const Search = () => {
           reset={ reset }
         />
       ) }
-    </div>
+    </StyledSearch>
   );
 }

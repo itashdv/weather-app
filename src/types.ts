@@ -29,11 +29,6 @@ export interface IWeatherFetch {
   loading: boolean;
 }
 
-export interface ISearch {
-  value: string;
-  query: string | null;
-}
-
 export interface IAppContext {
   locations: ILocation[];
   addLocation: (location: ILocation) => void;
