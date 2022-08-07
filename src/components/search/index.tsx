@@ -14,7 +14,7 @@ export const Search = () => {
   const [value, setValue] = useState<string>('');
   const [query, setQuery] = useState<string>('');
 
-  let searchTimeout: ReturnType<typeof setTimeout> = setTimeout(() => '', 500);
+  let searchTimeout: ReturnType<typeof setTimeout> = setTimeout(() => '', 1000);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);

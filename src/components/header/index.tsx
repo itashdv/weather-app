@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import { Text } from '../shared';
 
 const StyledHeader = styled.header`
-  // border: 2px solid red;
+  margin: 10px;
 `;
 
-export const Header: React.FC = () => {
+export const Header = () => {
   return (
     <StyledHeader>
       <Text

@@ -1,7 +1,7 @@
 import React from "react";
 import { useFetch } from '../hooks';
 
-import { Text, Weather } from "./shared";
+import { Text, Weather, Loader } from "./shared";
 
 type Props = {
   location: {
@@ -22,9 +22,11 @@ export const Location = ({ location, onRemove }: Props) => {
   return (
     <>
       { loading && (
-        <Text color={ '#000' } size={ '16px' }>
-          Loading current location..
-        </Text>
+        <Loader
+          height={ '6px' }
+          loading={ loading }
+          margin={ '4px' }
+        />
       ) }
 
       { error && (
