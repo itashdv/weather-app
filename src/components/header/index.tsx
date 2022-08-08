@@ -11,7 +11,7 @@ export const Header = () => {
   return (
     <StyledHeader>
       <Text
-        color={ '#000' }
+        color={ '#fff' }
         size={ '24px' }
         textAlign={ 'center' }
       >

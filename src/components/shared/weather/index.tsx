@@ -7,7 +7,7 @@ import { InfoBox } from './InfoBox';
 import { IconBox } from './IconBox';
 
 const StyledWeather = styled.div`
-  background-color: #37B3FB;
+  background-color: #206993;
   margin: 6px auto;
   padding: 14px;
 `;

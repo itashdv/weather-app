@@ -54,6 +54,7 @@ export const QueryList = React.memo(({ query, reset }: Props) => {
           <List
             list={ data }
             onClick={ onClick }
+            onClickOutside={ reset }
           />
         </StyledListHolder>
       ) }
