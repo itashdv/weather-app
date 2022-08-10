@@ -1,12 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import * as Styled from './styles';
 
 import { Heading, Text } from '../../shared';
-
-const StyledInfoBox = styled.div`
-  text-align: left;
-  width: 50%;
-`;
 
 type Props = {
   description: string;
@@ -52,7 +47,7 @@ export const InfoBox = ({
   }
 
   return (
-    <StyledInfoBox>
+    <Styled.InfoBox>
       <Heading styleProps={ nameHeadingStyle }>
         { name }
       </Heading>
@@ -83,6 +78,6 @@ export const InfoBox = ({
           </Text>
         </>
       ) }
-    </StyledInfoBox>
+    </Styled.InfoBox>
   );
 }

@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import * as Styled from './styles';
 
-import { Content } from './Content';
 import { Footer } from './Footer';
 import { InfoBox } from './InfoBox';
 import { IconBox } from './IconBox';
-
-const StyledWeather = styled.div`
-  background-color: #206993;
-  margin: 6px auto;
-  padding: 14px;
-`;
 
 type Props = {
   description: string;
@@ -42,8 +35,8 @@ export const Weather = ({
   const minimize = () => setMinimized(true);
 
   return (
-    <StyledWeather>
-      <Content>
+    <Styled.Weather>
+      <Styled.Content>
         <InfoBox
           description={ description }
           feelsLike={ feelsLike }
@@ -62,7 +55,7 @@ export const Weather = ({
           temp={ temp }
           text={ 'Details' }
         />
-      </Content>
+      </Styled.Content>
       { !minimized && (
         <Footer
           color={ '#fff' }
@@ -73,6 +66,6 @@ export const Weather = ({
           onClickRight={ onRemove && onRemove }
         />
       ) }
-    </StyledWeather>
+    </Styled.Weather>
   );
 }

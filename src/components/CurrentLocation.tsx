@@ -4,7 +4,7 @@ import { useLocation } from '../hooks';
 import { Text, Loader } from './shared';
 import { Location } from './Location';
 
-export const CurrentLocation: React.FC = () => {
+export const CurrentLocation = () => {
   const { data, error, loading } = useLocation();
 
   const loaderStyle = {
@@ -18,16 +18,11 @@ export const CurrentLocation: React.FC = () => {
     $size: '16px',
   }
 
-  return loading ? (
-    <Loader
-      loading={ loading }
-      styleProps={ loaderStyle }
-    />
-  ) : error ? (
-    <Text styleProps={ errorTextStyle }>
-      { error.message }
-    </Text>
-  ) : data ? (
-    <Location location={ data[0] } />
-  ) : null;
+  return loading
+    ? <Loader loading={ loading } styleProps={ loaderStyle } />
+      : error
+    ? <Text styleProps={ errorTextStyle }>{ error.message }</Text>
+      : data
+    ? <Location location={ data[0] } />
+      : null;
 }

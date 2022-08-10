@@ -1,21 +1,11 @@
 import React, { useContext } from 'react';
-import styled from 'styled-components';
+import * as Styled from './styles';
 
 import { AppContext } from '../../context';
 import { ILocation } from '../../types';
 import { useQueryFetch } from '../../hooks';
 
 import { List, Loader, Text } from '../shared';
-
-const StyledQueryList = styled.div`
-  position: relative;
-`;
-
-const StyledListHolder = styled.div`
-  position: absolute;
-  width: 100%;
-  background: #fff;
-`;
 
 type Props = {
   query: string;
@@ -44,27 +34,16 @@ export const QueryList = React.memo(({ query, reset }: Props) => {
   }
 
   return (
-    <StyledQueryList>
-      { loading && (
-        <Loader
-          loading={ loading }
-          styleProps={ loaderStyle }
-        />
-      ) }
-      { error && (
-        <Text styleProps={ errorTextStyle }>
-          { error.message }
-        </Text>
-      ) }
-      { data && (
-        <StyledListHolder>
-          <List
-            list={ data }
-            onClick={ onClick }
-            onClickOutside={ reset }
-          />
-        </StyledListHolder>
-      ) }
-    </StyledQueryList>
+    <Styled.QueryList>
+      { loading ? (
+        <Loader loading={ loading } styleProps={ loaderStyle } />
+      ) : error ? (
+        <Text styleProps={ errorTextStyle }>{ error.message }</Text>
+      ) : data ? (
+        <Styled.ListHolder>
+          <List list={ data } onClick={ onClick } onClickOutside={ reset } />
+        </Styled.ListHolder>
+      ) : null }
+    </Styled.QueryList>
   );
 });

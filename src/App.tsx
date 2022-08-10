@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import { AppProvider } from './context';
+import * as Styled from './styles';
 
 import {
   CurrentLocation,
@@ -9,21 +9,15 @@ import {
   SelectedLocations
 } from './components';
 
-const StyledApp = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-  width: 380px;
-`;
-
 function App() {
   return (
     <AppProvider>
-      <StyledApp>
+      <Styled.App>
         <Header />
         <Search />
         <CurrentLocation />
         <SelectedLocations />
-      </StyledApp>
+      </Styled.App>
     </AppProvider>
   );
 }

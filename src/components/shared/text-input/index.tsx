@@ -1,29 +1,24 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const StyledInputText = styled.input`
-  padding: 4px;
-  width: 100%;
-`;
+import * as Styled from './styles';
 
 type Props = {
   name: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const TextInput = ({
   name,
+  onChange,
   placeholder,
   value,
-  onChange,
 }: Props) => (
-  <StyledInputText
+  <Styled.TextInput
+    type="text"
     name={ name }
+    onChange={ onChange }
     placeholder={ placeholder }
     value={ value }
-    onChange={ onChange }
-    type="text"
   />
 );

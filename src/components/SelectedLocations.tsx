@@ -4,11 +4,11 @@ import { AppContext } from '../context';
 import { Location } from './Location';
 
 export const SelectedLocations = () => {
-  const context = useContext(AppContext);
+  const { locations, removeLocation } = useContext(AppContext);
 
   return (
     <>
-      { context?.locations && context.locations.map(location => (
+      { locations.map(location => (
         <Location
           key={ location.id }
           location={{
@@ -16,7 +16,7 @@ export const SelectedLocations = () => {
             name: location.name,
             url: location.url
           }}
-          onRemove={ context.removeLocation }
+          onRemove={ removeLocation }
         />
       )) }
     </>

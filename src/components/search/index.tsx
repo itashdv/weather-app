@@ -1,14 +1,9 @@
 import React, { useCallback, useState } from 'react';
-import styled from 'styled-components';
+import * as Styled from './styles';
 
 import { getSearchQuery } from '../../utils';
 import { TextInput } from '../shared';
 import { QueryList } from './QueryList';
-
-const StyledSearch = styled.nav`
-  padding: 4px;
-  width: 100%;
-`;
 
 export const Search = () => {
   const [value, setValue] = useState<string>('');
@@ -33,19 +28,14 @@ export const Search = () => {
   }, [setValue, setQuery]);
 
   return (
-    <StyledSearch>
+    <Styled.Search>
       <TextInput
         name={ 'location' }
+        onChange={ handleChange }
         placeholder={ 'Search for location..' }
         value={ value }
-        onChange={ handleChange }
       />
-      { query && (
-        <QueryList
-          query={ query }
-          reset={ reset }
-        />
-      ) }
-    </StyledSearch>
+      { query && <QueryList query={ query } reset={ reset } /> }
+    </Styled.Search>
   );
 }

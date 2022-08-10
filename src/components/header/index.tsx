@@ -1,11 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import * as Styled from './styles';
 
 import { Heading } from '../shared';
-
-const StyledHeader = styled.header`
-  margin: 10px;
-`;
 
 export const Header = () => {
   const headingStyle = {
@@ -14,10 +10,10 @@ export const Header = () => {
   }
 
   return (
-    <StyledHeader>
+    <Styled.Header>
       <Heading styleProps={ headingStyle }>
         Welcome to Weather App!
       </Heading>
-    </StyledHeader>
+    </Styled.Header>
   );
 }

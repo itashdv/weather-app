@@ -1,7 +1,7 @@
 import React from "react";
 import { useFetch } from '../hooks';
 
-import { Text, Weather, Loader } from "./shared";
+import { Loader, Text, Weather } from "./shared";
 
 type Props = {
   location: {
@@ -32,20 +32,11 @@ export const Location = ({ location, onRemove }: Props) => {
 
   return (
     <>
-      { loading && (
-        <Loader
-          loading={ loading }
-          styleProps={ loaderStyle }
-        />
-      ) }
-
-      { error && (
-        <Text styleProps={ errorTextStyle }>
-          { error.message }
-        </Text>
-      ) }
-
-      { data && (
+      { loading ? (
+        <Loader loading={ loading } styleProps={ loaderStyle } />
+      ) : error ? (
+        <Text styleProps={ errorTextStyle }>{ error.message }</Text>
+      ) : data ? (
         <Weather
           description={ data.description }
           feelsLike={ data.feels_like }
@@ -57,7 +48,7 @@ export const Location = ({ location, onRemove }: Props) => {
           temp={ data.temp }
           wind={ data.wind }
         />
-      ) }
+      ) : null }
     </>
   );
 };

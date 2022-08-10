@@ -4,7 +4,7 @@ import { LinkButton } from './link-button';
 import { List } from './list';
 import { Loader } from './loader';
 import { Text } from './text';
-import { TextInput } from './TextInput';
+import { TextInput } from './text-input';
 import { Weather } from './weather';
 
 export {
