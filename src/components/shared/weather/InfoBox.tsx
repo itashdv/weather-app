@@ -1,5 +1,6 @@
 import React from 'react';
 import * as Styled from './styles';
+import { CommonProps, MinimizedProps, WeatherProps } from '../../../types';
 
 import { Heading, Text } from '../../shared';
 
@@ -23,7 +24,7 @@ export const InfoBox = ({
   name,
   temp,
   wind,
-}: Props) => {
+}: Props & CommonProps & MinimizedProps & WeatherProps) => {
   const nameHeadingStyle = {
     $color: '#fff',
     $size: '22px',

@@ -1,20 +1,13 @@
 import React, { useState } from 'react';
 import * as Styled from './styles';
+import { CommonProps, IconProps, WeatherProps } from '../../../types';
 
 import { Footer } from './Footer';
 import { InfoBox } from './InfoBox';
 import { IconBox } from './IconBox';
 
 type Props = {
-  description: string;
-  feelsLike: number;
-  iconUrl: string;
-  max: number;
-  min: number;
-  name: string;
   onRemove?: () => void;
-  temp: number;
-  wind: number;
 }
 
 export const Weather = ({
@@ -27,7 +20,7 @@ export const Weather = ({
   onRemove,
   temp,
   wind,
-}: Props) => {
+}: Props & CommonProps & IconProps & WeatherProps) => {
   const [minimized, setMinimized] = useState<boolean>(true);
 
   const maximize = () => setMinimized(false);
@@ -58,8 +51,6 @@ export const Weather = ({
       </Styled.Content>
       { !minimized && (
         <Footer
-          color={ '#fff' }
-          fontSize={ '14px' }
           leftText={ 'Minimize' }
           onClickLeft={ minimize }
           rightText={ onRemove ? 'Remove' : undefined }

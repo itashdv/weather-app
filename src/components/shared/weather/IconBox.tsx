@@ -1,22 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import * as Styled from './styles';
+import { CommonProps, IconProps, MinimizedProps } from '../../../types'
 
 import { Heading, Image, LinkButton } from '../../shared';
 
-const StyledIconBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  text-align: left;
-  width: 50%;
-`;
-
 type Props = {
-  description: string;
-  iconUrl: string;
-  minimized: boolean;
   onClick: () => void;
-  temp: number;
   text: string;
 }
 
@@ -27,7 +16,7 @@ export const IconBox = ({
   onClick,
   temp,
   text,
-}: Props) => {
+}: Props & CommonProps & IconProps & MinimizedProps) => {
   const headingStyle = {
     $color: '#fff',
     $size: '24px',
@@ -42,7 +31,7 @@ export const IconBox = ({
   }
 
   return (
-    <StyledIconBox>
+    <Styled.IconBox>
       { minimized ? (
         <>
           <Heading styleProps={ headingStyle }>
@@ -61,6 +50,6 @@ export const IconBox = ({
           styleProps={ imageStyle }
         />
       ) }
-    </StyledIconBox>
+    </Styled.IconBox>
   );
 }

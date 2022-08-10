@@ -35,14 +35,12 @@ export interface IAppContext {
   removeLocation: (id: string) => void;
 }
 
-///////////////////////
-
-type CommonProps = {
+export type CommonProps = {
   description: string;
   temp: number;
 }
 
-type SecondCommonProps = {
+export type WeatherProps = {
   feelsLike: number;
   max: number;
   min: number;
@@ -50,42 +48,10 @@ type SecondCommonProps = {
   wind: number;
 }
 
-type ThirdCommonProps = {
+export type IconProps = {
   iconUrl: string;
 }
 
-type FourthCommonProps = {
+export type MinimizedProps = {
   minimized: boolean;
-}
-
-type WeatherProps = {
-  description: string;
-  feelsLike: number;
-  iconUrl: string;
-  max: number;
-  min: number;
-  name: string;
-  onRemove?: () => void;
-  temp: number;
-  wind: number;
-}
-
-type InfoBoxProps = {
-  description: string;
-  feelsLike: number;
-  max: number;
-  min: number;
-  minimized: boolean;
-  name: string;
-  temp: number;
-  wind: number;
-}
-
-type IconBoxProps = {
-  description: string;
-  iconUrl: string;
-  minimized: boolean;
-  onClick: () => void;
-  temp: number;
-  text: string;
 }

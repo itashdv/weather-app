@@ -1,16 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import * as Styled from './styles';
 
 import { LinkButton } from '../../shared';
 
-const StyledFooter = styled.div`
-  display: flex;
-  justify-content: space-around;
-`;
-
 type Props = {
-  color: string;
-  fontSize: string;
   leftText: string;
   onClickLeft: () => void;
   rightText?: string;
@@ -18,20 +11,18 @@ type Props = {
 }
 
 export const Footer = ({
-  color,
-  fontSize,
   leftText,
   onClickLeft,
   rightText,
   onClickRight,
 }: Props) => {
   const linkButtonStyle = {
-    $color: color,
-    $size: fontSize,
+    $color: '#fff',
+    $size: '14px',
   }
 
   return (
-    <StyledFooter>
+    <Styled.Footer>
       <LinkButton
         onClick={ onClickLeft }
         text={ leftText }
@@ -44,6 +35,6 @@ export const Footer = ({
           styleProps={ linkButtonStyle }
         />
       ) }
-    </StyledFooter>
+    </Styled.Footer>
   );
 }
