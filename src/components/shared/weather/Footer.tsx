@@ -3,43 +3,45 @@ import styled from 'styled-components';
 
 import { LinkButton } from '../../shared';
 
-type Props = {
-  color: string;
-  leftText: string;
-  onClickLeft: () => void;
-  onClickRight?: () => void;
-  rightText?: string;
-  size: number;
-}
-
 const StyledFooter = styled.div`
   display: flex;
   justify-content: space-around;
 `;
 
+type Props = {
+  color: string;
+  fontSize: string;
+  leftText: string;
+  onClickLeft: () => void;
+  rightText?: string;
+  onClickRight?: () => void;
+}
+
 export const Footer = ({
   color,
+  fontSize,
   leftText,
   onClickLeft,
-  onClickRight,
   rightText,
-  size,
+  onClickRight,
 }: Props) => {
+  const linkButtonStyle = {
+    $color: color,
+    $size: fontSize,
+  }
 
   return (
     <StyledFooter>
       <LinkButton
-        color={ color }
         onClick={ onClickLeft }
-        size={ size }
         text={ leftText }
+        styleProps={ linkButtonStyle }
       />
       { rightText && onClickRight && (
         <LinkButton
-          color={ color }
           onClick={ onClickRight }
-          size={ size }
           text={ rightText }
+          styleProps={ linkButtonStyle }
         />
       ) }
     </StyledFooter>

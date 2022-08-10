@@ -29,34 +29,56 @@ export const InfoBox = ({
   temp,
   wind,
 }: Props) => {
+  const nameHeadingStyle = {
+    $color: '#fff',
+    $size: '22px',
+  }
+
+  const tempHeadingStyle = {
+    $color: '#fff',
+    $size: '24px',
+  }
+
+  const descriptionTextStyle = {
+    $align: 'left',
+    $color: '#fff',
+    $size: !minimized ? '20px' : '14px',
+  }
+
+  const textStyle = {
+    $align: 'left',
+    $color: '#fff',
+    $size: '16px',
+  }
+
   return (
     <StyledInfoBox>
-      <Heading color={ '#FFF' } size={ 22 }>
+      <Heading styleProps={ nameHeadingStyle }>
         { name }
       </Heading>
 
       { !minimized && (
-        <Heading color={ '#FFF' } size={ 24 }>
+        <Heading styleProps={ tempHeadingStyle }>
           { temp }&deg;C
         </Heading>
       ) }
 
-      <Text color={ '#FFF' } size={ !minimized ? '20px' : '14px' }>
+      <Text styleProps={ descriptionTextStyle }>
         { description }
       </Text>
 
       { !minimized && (
         <>
-          <Text color={ '#FFF' } size={ '16px' }>
+          <Text styleProps={ textStyle }>
             Feels like: { feelsLike }&deg;C
           </Text>
-          <Text color={ '#FFF' } size={ '16px' }>
+          <Text styleProps={ textStyle }>
             Min. temp: { min }&deg;C
           </Text>
-          <Text color={ '#FFF' } size={ '16px' }>
+          <Text styleProps={ textStyle }>
             Max. temp: { max }&deg;C
           </Text>
-          <Text color={ '#FFF' } size={ '16px' }>
+          <Text styleProps={ textStyle }>
             Wind: { wind } km/h
           </Text>
         </>

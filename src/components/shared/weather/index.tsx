@@ -65,12 +65,12 @@ export const Weather = ({
       </Content>
       { !minimized && (
         <Footer
-          color={ '#FFF' }
+          color={ '#fff' }
+          fontSize={ '14px' }
           leftText={ 'Minimize' }
           onClickLeft={ minimize }
-          onClickRight={ onRemove && onRemove }
           rightText={ onRemove ? 'Remove' : undefined }
-          size={ 14 }
+          onClickRight={ onRemove && onRemove }
         />
       ) }
     </StyledWeather>

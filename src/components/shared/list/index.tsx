@@ -1,24 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import * as Styled from './styles';
 
 import { ILocation } from '../../../types';
-
-const StyledList = styled.ul`
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-`;
-
-const ListItem = styled.li`
-  cursor: pointer;
-  margin: 6px 0;
-  padding: 4px;
-  width: 100%;
-  &:hover {
-    border: 1px solid #c3c3c3;
-  }
-  border-radius: 2px;
-`;
 
 type Props = {
   list: ILocation[];
@@ -38,16 +21,21 @@ export const List = ({ list, onClick, onClickOutside }: Props) => {
 
     document.addEventListener('click', handleClick, true);
 
-    return () => document.removeEventListener('click', handleClick, true);
+    return () => {
+      document.removeEventListener('click', handleClick, true);
+    }
   }, [onClickOutside]);
 
   return (
-    <StyledList ref={ ref }>
+    <Styled.List ref={ ref }>
       { list.map((location: ILocation) => (
-        <ListItem key={ location.id } onClick={ () => onClick(location) }>
+        <Styled.ListItem
+          key={ location.id }
+          onClick={ () => onClick(location) }
+        >
           { `${ location.name } (${ location.country })` }
-        </ListItem>
+        </Styled.ListItem>
       )) }
-    </StyledList>
+    </Styled.List>
   );
 }

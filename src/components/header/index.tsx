@@ -1,22 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Text } from '../shared';
+import { Heading } from '../shared';
 
 const StyledHeader = styled.header`
   margin: 10px;
 `;
 
 export const Header = () => {
+  const headingStyle = {
+    $color: '#fff',
+    $size: '24px',
+  }
+
   return (
     <StyledHeader>
-      <Text
-        color={ '#fff' }
-        size={ '24px' }
-        textAlign={ 'center' }
-      >
+      <Heading styleProps={ headingStyle }>
         Welcome to Weather App!
-      </Text>
+      </Heading>
     </StyledHeader>
   );
 }

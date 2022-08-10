@@ -1,26 +1,19 @@
-import { Button } from './Button';
-import { LinkButton } from './LinkButton';
-import { WeatherWidget } from './WeatherWidget';
-import { Weather } from './weather';
-// import { Weather } from './Weather'; this needs to be deleted!!
-import { Text } from './Text';
-import { Heading } from './Heading';
-import { Image } from './Image';
-import { Footer } from './Footer';
-import { TextInput } from './TextInput';
-import { Loader } from './Loader';
+import { Heading } from './heading';
+import { Image } from './image';
+import { LinkButton } from './link-button';
 import { List } from './list';
+import { Loader } from './loader';
+import { Text } from './text';
+import { TextInput } from './TextInput';
+import { Weather } from './weather';
 
 export {
-  Button,
-  LinkButton,
-  WeatherWidget,
-  Weather,
-  Text,
   Heading,
   Image,
-  Footer,
-  TextInput,
-  Loader,
+  LinkButton,
   List,
+  Loader,
+  Text,
+  TextInput,
+  Weather,
 }

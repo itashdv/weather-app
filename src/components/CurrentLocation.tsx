@@ -7,14 +7,24 @@ import { Location } from './Location';
 export const CurrentLocation: React.FC = () => {
   const { data, error, loading } = useLocation();
 
+  const loaderStyle = {
+    $height: '6px',
+    $margin: '4px',
+  }
+
+  const errorTextStyle = {
+    $align: 'center',
+    $color: 'red',
+    $size: '16px',
+  }
+
   return loading ? (
     <Loader
-      height={ '6px' }
       loading={ loading }
-      margin={ '4px' }
+      styleProps={ loaderStyle }
     />
   ) : error ? (
-    <Text color={ 'red' } size={ '16px' } textAlign={ 'center' }>
+    <Text styleProps={ errorTextStyle }>
       { error.message }
     </Text>
   ) : data ? (

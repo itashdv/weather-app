@@ -28,26 +28,37 @@ export const IconBox = ({
   temp,
   text,
 }: Props) => {
+  const headingStyle = {
+    $color: '#fff',
+    $size: '24px',
+  }
+  const linkButtonStyle = {
+    $color: '#fff',
+    $size: '14px',
+  }
+  const imageStyle = {
+    $height: '100px',
+    $width: '100px',
+  }
+
   return (
     <StyledIconBox>
       { minimized ? (
         <>
-          <Heading color={ '#FFF' } size={ 24 }>
+          <Heading styleProps={ headingStyle }>
             { temp }&deg;C
           </Heading>
           <LinkButton
-            color={ '#FFF' }
-            onClick={ onClick }
-            size={ 14 }
             text={ text }
+            onClick={ onClick }
+            styleProps={ linkButtonStyle }
           />
         </>
       ) : (
         <Image
           alt={ description }
-          height={ 100 }
-          url={ iconUrl }
-          width={ 100 }
+          src={ iconUrl }
+          styleProps={ imageStyle }
         />
       ) }
     </StyledIconBox>
