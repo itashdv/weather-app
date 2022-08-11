@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import * as Styled from './styles';
 
-import { AppContext } from '../../context';
-import { ILocation } from '../../types';
-import { useQueryFetch } from '../../hooks';
+import { AppContext } from '../../../context';
+import { ILocation } from '../../../types';
+import { useQueryFetch } from '../../../hooks';
 
-import { List, Loader, Text } from '../shared';
+import { List, Loader, Text } from '../../shared';
 
 type Props = {
   query: string;

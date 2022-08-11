@@ -1,8 +1,8 @@
-import { CurrentLocation } from "./CurrentLocation";
-import { Header } from "./header";
-import { Location } from "./Location";
-import { Search } from "./search";
-import { SelectedLocations } from "./SelectedLocations";
+import { CurrentLocation } from "./feature/CurrentLocation";
+import { Header } from "./feature/header";
+import { Location } from "./feature/Location";
+import { Search } from "./feature/search";
+import { SelectedLocations } from "./feature/SelectedLocations";
 
 export {
   CurrentLocation,

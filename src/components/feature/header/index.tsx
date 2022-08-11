@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Styled from './styles';
 
-import { Heading } from '../shared';
+import { Heading } from '../../shared';
 
 export const Header = () => {
   const headingStyle = {

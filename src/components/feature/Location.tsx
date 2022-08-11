@@ -1,7 +1,7 @@
 import React from "react";
-import { useFetch } from '../hooks';
+import { useFetch } from '../../hooks';
 
-import { Loader, Text, Weather } from "./shared";
+import { Loader, Text, Weather } from "../shared";
 
 type Props = {
   location: {

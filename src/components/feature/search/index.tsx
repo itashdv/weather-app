@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import * as Styled from './styles';
 
-import { getSearchQuery } from '../../utils';
-import { TextInput } from '../shared';
+import { getSearchQuery } from '../../../utils';
+import { TextInput } from '../../shared';
 import { QueryList } from './QueryList';
 
 export const Search = () => {
