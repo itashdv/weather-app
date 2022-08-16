@@ -1,8 +1,8 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import * as Styled from './styles';
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
   styleProps: Styled.Props;
 }
 

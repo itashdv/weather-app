@@ -1,9 +1,9 @@
-import React from 'react';
+import { ChangeEvent } from 'react';
 import * as Styled from './styles';
 
 type Props = {
   name: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   value: string;
 }

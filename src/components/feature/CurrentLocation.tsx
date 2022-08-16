@@ -1,4 +1,3 @@
-import React from 'react';
 import { useLocation } from '../../hooks';
 
 import { Text, Loader } from '../shared';

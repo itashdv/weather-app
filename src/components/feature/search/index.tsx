@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import * as Styled from './styles';
 
 import { getSearchQuery } from '../../../utils';
@@ -11,7 +11,7 @@ export const Search = () => {
 
   let searchTimeout: ReturnType<typeof setTimeout> = setTimeout(() => '', 1000);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
 
     clearTimeout(searchTimeout);

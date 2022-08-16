@@ -1,4 +1,3 @@
-import React from 'react';
 import { AppProvider } from './context';
 import * as Styled from './styles';
 

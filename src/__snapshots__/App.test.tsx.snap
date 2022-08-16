@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders app component 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bczRLJ fjLCoJ"
+  >
+    <header
+      class="sc-breuTD iULwWD"
+    >
+      <h4
+        class="sc-gsnTZi euQkou"
+      >
+        Welcome to Weather App!
+      </h4>
+    </header>
+    <nav
+      class="sc-ksZaOG biTzKL"
+    >
+      <input
+        class="sc-papXJ gZeQNr"
+        name="location"
+        placeholder="Search for location.."
+        type="text"
+        value=""
+      />
+    </nav>
+    <p
+      class="sc-ftvSup henCeH"
+    >
+      Geolocation is not supported by your browser!
+    </p>
+  </div>
+</DocumentFragment>
+`;

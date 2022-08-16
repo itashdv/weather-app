@@ -1,4 +1,3 @@
-import React from 'react';
 import * as Styled from './styles';
 import { CommonProps, MinimizedProps, WeatherProps } from '../../../types';
 

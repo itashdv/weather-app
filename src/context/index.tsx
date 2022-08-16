@@ -1,8 +1,8 @@
-import React, { createContext, useState } from 'react';
+import { createContext, useState, ReactNode, FC } from 'react';
 import { ILocation, IAppContext } from '../types';
 
 type ProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const AppContext = createContext<IAppContext>({
@@ -11,7 +11,7 @@ export const AppContext = createContext<IAppContext>({
   removeLocation: () => {},
 });
 
-export const AppProvider: React.FC<ProviderProps> = ({ children }) => {
+export const AppProvider: FC<ProviderProps> = ({ children }) => {
   const [locations, setLocations] = useState<ILocation[]>([]);
 
   const addLocation = (location: ILocation) =>

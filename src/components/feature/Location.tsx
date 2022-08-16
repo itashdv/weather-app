@@ -1,4 +1,3 @@
-import React from "react";
 import { useFetch } from '../../hooks';
 
 import { Loader, Text, Weather } from "../shared";

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { memo, useContext } from 'react';
 import * as Styled from './styles';
 
 import { AppContext } from '../../../context';
@@ -12,7 +12,7 @@ type Props = {
   reset: () => void;
 }
 
-export const QueryList = React.memo(({ query, reset }: Props) => {
+export const QueryList = memo(({ query, reset }: Props) => {
   const { addLocation } = useContext(AppContext);
 
   const { data, error, loading } = useQueryFetch(query);
