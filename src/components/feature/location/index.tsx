@@ -30,7 +30,7 @@ export const Location = ({ location, onRemove }: Props) => {
   }
 
   return (
-    <>
+    <div role={'contentinfo'}>
       { loading ? (
         <Loader loading={ loading } styleProps={ loaderStyle } />
       ) : error ? (
@@ -48,6 +48,6 @@ export const Location = ({ location, onRemove }: Props) => {
           wind={ data.wind }
         />
       ) : null }
-    </>
+    </div>
   );
 };

@@ -20,7 +20,7 @@ export const CurrentLocation = () => {
   return loading
     ? <Loader loading={ loading } styleProps={ loaderStyle } />
       : error
-    ? <Text styleProps={ errorTextStyle }>{ error.message }</Text>
+    ? <Text role="alert" styleProps={ errorTextStyle }>{ error.message }</Text>
       : data
     ? <Location location={ data[0] } />
       : null;

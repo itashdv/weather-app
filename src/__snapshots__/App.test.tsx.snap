@@ -27,6 +27,7 @@ exports[`renders app component 1`] = `
     </nav>
     <p
       class="sc-ftvSup henCeH"
+      role="alert"
     >
       Geolocation is not supported by your browser!
     </p>
