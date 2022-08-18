@@ -1,7 +1,7 @@
-import { useLocation } from '../../hooks';
+import { useLocation } from '../../../hooks';
 
-import { Text, Loader } from '../shared';
-import { Location } from './Location';
+import { Text, Loader } from '../../shared';
+import { Location } from '../location';
 
 export const CurrentLocation = () => {
   const { data, error, loading } = useLocation();

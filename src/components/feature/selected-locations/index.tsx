@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { AppContext } from '../../context';
+import { AppContext } from '../../../context';
 
-import { Location } from './Location';
+import { Location } from '../location';
 
 export const SelectedLocations = () => {
   const { locations, removeLocation } = useContext(AppContext);
