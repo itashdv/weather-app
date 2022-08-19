@@ -8,25 +8,25 @@ const setup = (jsx: ReactElement) =>
   ({ user: userEvent.setup(), ...render(jsx) });
 
 it('has correct initial value', () => {
-  const { getByPlaceholderText } = setup(<Search />);
+  const { getByRole } = setup(<Search />);
 
-  const searchInput = getByPlaceholderText('Search for location..');
+  const searchInput = getByRole('searchbox');
 
   expect(searchInput).toHaveValue('');
 });
 
 it('focuses and types correctly', async () => {
-  const { user, getByPlaceholderText } = setup(<Search />);
+  const { user, getByRole } = setup(<Search />);
 
-  const searchInput = getByPlaceholderText('Search for location..');
+  const searchInput = getByRole('searchbox');
 
   await user.click(searchInput);
 
   expect(searchInput).toHaveFocus();
 
-  await user.keyboard('Gaborone');
+  await user.keyboard('Botswana');
 
-  expect(searchInput).toHaveValue('Gaborone');
+  expect(searchInput).toHaveValue('Botswana');
 
   await user.clear(searchInput);
 

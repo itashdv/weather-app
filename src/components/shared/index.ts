@@ -1,3 +1,4 @@
+import { ErrorMessage } from './error-message';
 import { Heading } from './heading';
 import { Image } from './image';
 import { LinkButton } from './link-button';
@@ -8,6 +9,7 @@ import { TextInput } from './text-input';
 import { Weather } from './weather';
 
 export {
+  ErrorMessage,
   Heading,
   Image,
   LinkButton,

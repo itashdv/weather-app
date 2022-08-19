@@ -19,9 +19,9 @@ it('shows loader on mount', () => {
     loading: true,
   });
 
-  const { getByTestId } = setup(<CurrentLocation />);
+  const { getByRole } = setup(<CurrentLocation />);
 
-  const loader = getByTestId('loading-true');
+  const loader = getByRole('status');
 
   expect(loader).toBeInTheDocument();
 });

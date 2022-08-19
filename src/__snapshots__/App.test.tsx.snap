@@ -9,7 +9,8 @@ exports[`renders app component 1`] = `
       class="sc-breuTD iULwWD"
     >
       <h4
-        class="sc-gsnTZi euQkou"
+        class="sc-dkzDqf jzkBGN"
+        role="heading"
       >
         Welcome to Weather App!
       </h4>
@@ -21,12 +22,13 @@ exports[`renders app component 1`] = `
         class="sc-papXJ gZeQNr"
         name="location"
         placeholder="Search for location.."
-        type="text"
+        role="searchbox"
+        type="search"
         value=""
       />
     </nav>
     <p
-      class="sc-ftvSup henCeH"
+      class="sc-gsnTZi jlULjA"
       role="alert"
     >
       Geolocation is not supported by your browser!

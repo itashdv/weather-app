@@ -1,6 +1,6 @@
 import { useLocation } from '../../../hooks';
 
-import { Text, Loader } from '../../shared';
+import { ErrorMessage, Loader } from '../../shared';
 import { Location } from '../location';
 
 export const CurrentLocation = () => {
@@ -20,7 +20,7 @@ export const CurrentLocation = () => {
   return loading
     ? <Loader loading={ loading } styleProps={ loaderStyle } />
       : error
-    ? <Text role="alert" styleProps={ errorTextStyle }>{ error.message }</Text>
+    ? <ErrorMessage>{ error.message }</ErrorMessage>
       : data
     ? <Location location={ data[0] } />
       : null;

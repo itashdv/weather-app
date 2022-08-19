@@ -5,6 +5,8 @@ type Props = {
   name: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
+  role?: string;
+  type: string;
   value: string;
 }
 
@@ -12,13 +14,16 @@ export const TextInput = ({
   name,
   onChange,
   placeholder,
+  role,
+  type,
   value,
 }: Props) => (
   <Styled.TextInput
-    type="text"
     name={ name }
     onChange={ onChange }
     placeholder={ placeholder }
+    role={ role }
+    type={ type }
     value={ value }
   />
 );

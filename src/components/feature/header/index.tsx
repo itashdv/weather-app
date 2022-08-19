@@ -10,7 +10,7 @@ export const Header = () => {
 
   return (
     <Styled.Header>
-      <Heading styleProps={ headingStyle }>
+      <Heading role={ 'heading' } styleProps={ headingStyle }>
         Welcome to Weather App!
       </Heading>
     </Styled.Header>

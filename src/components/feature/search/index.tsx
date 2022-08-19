@@ -33,6 +33,8 @@ export const Search = () => {
         name={ 'location' }
         onChange={ handleChange }
         placeholder={ 'Search for location..' }
+        role={ 'searchbox' }
+        type={ 'search' }
         value={ value }
       />
       { query && <QueryList query={ query } reset={ reset } /> }

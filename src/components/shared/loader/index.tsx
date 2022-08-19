@@ -10,12 +10,12 @@ export const Loader = ({ loading, styleProps }: Props) => {
 
   return loading
     ? <Styled.LoadingTrue
-        data-testid="loading-true"
+        role={ 'status' }
         $height={ $height }
         $margin={ $margin }
       />
     : <Styled.LoadingFalse
-        data-testid="loading-false"
+        role={ 'status' }
         $height={ $height }
         $margin={ $margin }
       />
