@@ -28,7 +28,7 @@ export const Weather = ({
   const minimize = () => setMinimized(true);
 
   return (
-    <Styled.Weather>
+    <Styled.Weather role="article">
       <Styled.Content>
         <InfoBox
           description={ description }

@@ -11,12 +11,6 @@ export const CurrentLocation = () => {
     $margin: '4px',
   }
 
-  const errorTextStyle = {
-    $align: 'center',
-    $color: 'red',
-    $size: '16px',
-  }
-
   return loading
     ? <Loader loading={ loading } styleProps={ loaderStyle } />
       : error

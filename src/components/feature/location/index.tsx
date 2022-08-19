@@ -1,6 +1,6 @@
 import { useFetch } from '../../../hooks';
 
-import { Loader, Text, Weather } from "../../shared";
+import { ErrorMessage, Loader, Weather } from "../../shared";
 
 type Props = {
   location: {
@@ -23,18 +23,12 @@ export const Location = ({ location, onRemove }: Props) => {
     $margin: '4px',
   }
 
-  const errorTextStyle = {
-    $align: 'center',
-    $color: 'red',
-    $size: '16px',
-  }
-
   return (
     <div role={'contentinfo'}>
       { loading ? (
         <Loader loading={ loading } styleProps={ loaderStyle } />
       ) : error ? (
-        <Text styleProps={ errorTextStyle }>{ error.message }</Text>
+        <ErrorMessage>{ error.message }</ErrorMessage>
       ) : data ? (
         <Weather
           description={ data.description }

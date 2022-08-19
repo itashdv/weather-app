@@ -9,41 +9,49 @@ jest.mock('../../../hooks/useLocation');
 
 const hooks = { useLocation }
 
+const USE_LOCATION = jest.spyOn(hooks, 'useLocation');
+
 const setup = (jsx: ReactElement) =>
   ({ user: userEvent.setup(), ...render(jsx) });
 
-it('shows loader on mount', () => {
-  const USE_LOCATION = jest.spyOn(hooks, 'useLocation');
-
+it('shows only loader on mount', () => {
   USE_LOCATION.mockReturnValue({
     loading: true,
   });
 
-  const { getByRole } = setup(<CurrentLocation />);
+  const { getByRole, queryByRole } = setup(<CurrentLocation />);
+
+  const errorComponent = queryByRole('alert');
+
+  expect(errorComponent).toEqual(null);
+
+  const location = queryByRole('contentinfo');
+
+  expect(location).toEqual(null);
 
   const loader = getByRole('status');
 
   expect(loader).toBeInTheDocument();
 });
 
-it('shows location after data is successfully loaded', () => {
-  const USE_LOCATION = jest.spyOn(hooks, 'useLocation');
-  
+it('shows location component when data is loaded', () => {
   USE_LOCATION.mockReturnValue({
     loading: false,
     data: [{ id: '1', url: 'url1' }],
   });
 
-  const { getByRole } = setup(<CurrentLocation />);
+  const { getByRole, queryByRole } = setup(<CurrentLocation />);
+
+  const errorComponent = queryByRole('alert');
+
+  expect(errorComponent).toEqual(null);
 
   const location = getByRole('contentinfo');
 
   expect(location).toBeInTheDocument();
 });
 
-it('shows error if failed to fetch data', () => {
-  const USE_LOCATION = jest.spyOn(hooks, 'useLocation');
-
+it('shows only error if error occurred', () => {
   USE_LOCATION.mockReturnValue({
     loading: false,
     error: {
@@ -52,7 +60,15 @@ it('shows error if failed to fetch data', () => {
     }
   });
 
-  const { getByRole } = setup(<CurrentLocation />);
+  const { getByRole, queryByRole } = setup(<CurrentLocation />);
+
+  const loader = queryByRole('status');
+
+  expect(loader).toEqual(null);
+
+  const location = queryByRole('contentinfo');
+
+  expect(location).toEqual(null);
 
   const error = getByRole('alert');
 
