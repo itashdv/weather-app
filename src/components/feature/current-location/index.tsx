@@ -1,6 +1,6 @@
 import { useLocation } from '../../../hooks';
-
 import { ErrorMessage, Loader } from '../../shared';
+
 import { Location } from '../location';
 
 export const CurrentLocation = () => {

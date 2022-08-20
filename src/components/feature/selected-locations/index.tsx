@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { AppContext } from '../../../context';
 
+import { AppContext } from '../../../context';
 import { Location } from '../location';
 
 export const SelectedLocations = () => {

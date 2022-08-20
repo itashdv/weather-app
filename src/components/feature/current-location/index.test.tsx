@@ -2,39 +2,30 @@ import { ReactElement } from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { CurrentLocation } from './index';
 import { useLocation } from '../../../hooks';
+import { CurrentLocation } from './index';
 
 jest.mock('../../../hooks/useLocation');
 
 const hooks = { useLocation }
-
 const USE_LOCATION = jest.spyOn(hooks, 'useLocation');
 
 const setup = (jsx: ReactElement) =>
   ({ user: userEvent.setup(), ...render(jsx) });
 
-it('shows only loader on mount', () => {
-  USE_LOCATION.mockReturnValue({
-    loading: true,
-  });
+it('renders only loader on mount', () => {
+  USE_LOCATION.mockReturnValue({ loading: true });
 
   const { getByRole, queryByRole } = setup(<CurrentLocation />);
 
-  const errorComponent = queryByRole('alert');
+  expect(getByRole('status')).toBeInTheDocument();
 
-  expect(errorComponent).toEqual(null);
+  expect(queryByRole('contentinfo')).toEqual(null);
 
-  const location = queryByRole('contentinfo');
-
-  expect(location).toEqual(null);
-
-  const loader = getByRole('status');
-
-  expect(loader).toBeInTheDocument();
+  expect(queryByRole('alert')).toEqual(null);
 });
 
-it('shows location component when data is loaded', () => {
+it('renders only location when data is loaded', () => {
   USE_LOCATION.mockReturnValue({
     loading: false,
     data: [{ id: '1', url: 'url1' }],
@@ -42,16 +33,12 @@ it('shows location component when data is loaded', () => {
 
   const { getByRole, queryByRole } = setup(<CurrentLocation />);
 
-  const errorComponent = queryByRole('alert');
+  expect(getByRole('contentinfo')).toBeInTheDocument();
 
-  expect(errorComponent).toEqual(null);
-
-  const location = getByRole('contentinfo');
-
-  expect(location).toBeInTheDocument();
+  expect(queryByRole('alert')).toEqual(null);
 });
 
-it('shows only error if error occurred', () => {
+it('renders only error if error occurred', () => {
   USE_LOCATION.mockReturnValue({
     loading: false,
     error: {
@@ -62,15 +49,9 @@ it('shows only error if error occurred', () => {
 
   const { getByRole, queryByRole } = setup(<CurrentLocation />);
 
-  const loader = queryByRole('status');
+  expect(getByRole('alert')).toBeInTheDocument();
 
-  expect(loader).toEqual(null);
+  expect(queryByRole('status')).toEqual(null);
 
-  const location = queryByRole('contentinfo');
-
-  expect(location).toEqual(null);
-
-  const error = getByRole('alert');
-
-  expect(error).toBeInTheDocument();
+  expect(queryByRole('contentinfo')).toEqual(null);
 });

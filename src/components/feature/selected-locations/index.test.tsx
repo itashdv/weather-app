@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+
 import { IAppContext } from '../../../types';
 import { AppContext } from '../../../context';
 import { SelectedLocations } from './index';
@@ -13,7 +14,7 @@ const renderSelectedLocations = (value: IAppContext) => {
   return queryAllByRole;
 }
 
-it('does not show anything if locations are empty', () => {
+it('does not render anything if locations are empty', () => {
   const value = {
     locations: [],
     addLocation: () => {},
@@ -25,7 +26,7 @@ it('does not show anything if locations are empty', () => {
   expect(queryAllByRole('contentinfo')).toEqual([]);
 });
 
-it('does show locations if locations are present in context', () => {
+it('renders locations if locations are present in context', () => {
   const value = {
     locations: [
       { id: '1', url: 'url1' },

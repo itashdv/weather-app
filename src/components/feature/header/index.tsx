@@ -1,6 +1,6 @@
-import * as Styled from './styles';
-
 import { Heading } from '../../shared';
+
+import * as Styled from './styles';
 
 export const Header = () => {
   const headingStyle = {
