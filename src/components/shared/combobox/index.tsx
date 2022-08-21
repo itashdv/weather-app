@@ -52,7 +52,7 @@ export const Combobox = ({
   }
 
   return (
-    <Styled.Combobox>
+    <Styled.Combobox ref={ ref }>
       <Styled.Input
         aria-controls={ ariaControls }
         aria-expanded={ list.length === 0 ? false : true }
@@ -64,7 +64,7 @@ export const Combobox = ({
         value={ input }
       />
 
-      <Styled.Popup ref={ ref }>
+      <Styled.Popup>
         { loading && (
           <Loader loading={ true } styleProps={ loaderStyle } />
         ) }

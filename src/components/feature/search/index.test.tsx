@@ -10,21 +10,35 @@ const setup = (jsx: ReactElement) =>
 it('has correct initial value on mount', () => {
   const { getByRole } = setup(<Search />);
 
-  expect(getByRole('searchbox')).toHaveValue('');
+  expect(getByRole('combobox')).toHaveValue('');
 });
 
 it('focuses and types correctly', async () => {
   const { user, getByRole } = setup(<Search />);
 
-  await user.click(getByRole('searchbox'));
+  await user.click(getByRole('combobox'));
 
-  expect(getByRole('searchbox')).toHaveFocus();
+  expect(getByRole('combobox')).toHaveFocus();
 
   await user.keyboard('Botswana');
 
-  expect(getByRole('searchbox')).toHaveValue('Botswana');
+  expect(getByRole('combobox')).toHaveValue('Botswana');
 
-  await user.clear(getByRole('searchbox'));
+  await user.clear(getByRole('combobox'));
 
-  expect(getByRole('searchbox')).toHaveValue('');
+  expect(getByRole('combobox')).toHaveValue('');
+});
+
+it('shows loader upon typing and removes loader after clear', async () => {
+  const { user, getByRole, findByRole, queryByRole } = setup(<Search />);
+
+  await user.click(getByRole('combobox'));
+
+  await user.keyboard('Botswana');
+
+  expect(await findByRole('status')).toBeInTheDocument();
+
+  await user.clear(getByRole('combobox'));
+
+  expect(queryByRole('status')).toEqual(null);
 });

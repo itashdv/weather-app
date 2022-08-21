@@ -6,7 +6,7 @@ exports[`renders app component 1`] = `
     class="sc-bczRLJ fjLCoJ"
   >
     <header
-      class="sc-bjUoiL knXVFE"
+      class="sc-idiyUo oDHss"
     >
       <h4
         class="sc-iBkjds dXoUni"
@@ -32,12 +32,16 @@ exports[`renders app component 1`] = `
         class="sc-hKMtZM dtmaCZ"
       />
     </div>
-    <p
-      class="sc-gKXOVf gDJYYG"
-      role="alert"
+    <div
+      class="sc-bjUoiL fBGpkI"
     >
-      Geolocation is not supported by your browser!
-    </p>
+      <p
+        class="sc-gKXOVf gDJYYG"
+        role="alert"
+      >
+        Geolocation is not supported by your browser!
+      </p>
+    </div>
   </div>
 </DocumentFragment>
 `;
