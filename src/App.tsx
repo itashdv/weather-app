@@ -8,14 +8,18 @@ import {
   SelectedLocations
 } from './components';
 
+import { Combobox } from './components/shared';
+
 function App() {
   return (
     <AppProvider>
       <Styled.App>
-        <Header />
+        <Combobox />
+        <h1>Hello World!</h1>
+        {/* <Header />
         <Search />
         <CurrentLocation />
-        <SelectedLocations />
+        <SelectedLocations /> */}
       </Styled.App>
     </AppProvider>
   );

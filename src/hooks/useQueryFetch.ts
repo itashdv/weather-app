@@ -8,7 +8,7 @@ export const useQueryFetch = (url: string) => {
   });
 
   useEffect(() => {
-    if (!url) return;
+    if (!url) return setStatus({ data: [], loading: false });
 
     (() => {
       setStatus({ loading: true });

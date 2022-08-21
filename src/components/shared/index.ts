@@ -7,6 +7,7 @@ import { Loader } from './loader';
 import { Text } from './text';
 import { TextInput } from './text-input';
 import { Weather } from './weather';
+import { Combobox } from './combobox';
 
 export {
   ErrorMessage,
@@ -18,4 +19,5 @@ export {
   Text,
   TextInput,
   Weather,
+  Combobox,
 }
