@@ -6,16 +6,18 @@ type Props = {
 }
 
 export const Loader = ({ loading, styleProps }: Props) => {
-  const { $height, $margin } = styleProps;
+  const { $borderRadius, $height, $margin } = styleProps;
 
   return loading
     ? <Styled.LoadingTrue
         role={ 'status' }
+        $borderRadius={ $borderRadius }
         $height={ $height }
         $margin={ $margin }
       />
     : <Styled.LoadingFalse
         role={ 'status' }
+        $borderRadius={ $borderRadius }
         $height={ $height }
         $margin={ $margin }
       />

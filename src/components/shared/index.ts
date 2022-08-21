@@ -1,3 +1,4 @@
+import { Combobox } from './combobox';
 import { ErrorMessage } from './error-message';
 import { Heading } from './heading';
 import { Image } from './image';
@@ -7,9 +8,9 @@ import { Loader } from './loader';
 import { Text } from './text';
 import { TextInput } from './text-input';
 import { Weather } from './weather';
-import { Combobox } from './combobox';
 
 export {
+  Combobox,
   ErrorMessage,
   Heading,
   Image,
@@ -19,5 +20,4 @@ export {
   Text,
   TextInput,
   Weather,
-  Combobox,
 }

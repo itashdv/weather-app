@@ -6,29 +6,34 @@ exports[`renders app component 1`] = `
     class="sc-bczRLJ fjLCoJ"
   >
     <header
-      class="sc-breuTD iULwWD"
+      class="sc-bjUoiL knXVFE"
     >
       <h4
-        class="sc-dkzDqf jzkBGN"
+        class="sc-iBkjds dXoUni"
         role="heading"
       >
         Welcome to Weather App!
       </h4>
     </header>
-    <nav
-      class="sc-ksZaOG biTzKL"
+    <div
+      class="sc-gsnTZi JOiGb"
     >
       <input
-        class="sc-papXJ gZeQNr"
-        name="location"
-        placeholder="Search for location.."
-        role="searchbox"
+        aria-controls="locations-listbox"
+        aria-expanded="false"
+        aria-label="Searchbox for searching locations"
+        class="sc-dkzDqf kQOVSO"
+        placeholder="Enter the name of the location here.."
+        role="combobox"
         type="search"
         value=""
       />
-    </nav>
+      <div
+        class="sc-hKMtZM dtmaCZ"
+      />
+    </div>
     <p
-      class="sc-gsnTZi jlULjA"
+      class="sc-gKXOVf gDJYYG"
       role="alert"
     >
       Geolocation is not supported by your browser!

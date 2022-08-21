@@ -11,7 +11,7 @@ const getLocationFields = (locations: any) =>
   locations.map((location: any) => ({
     id: uuidv4(),
     country: location.country,
-    name: location.name,
+    name: `${ location.name } (${ location.country })`,
     url: getLocationUrlByCoords(location.lat, location.lon),
   }));
 

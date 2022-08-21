@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Combobox = styled.div`
+  margin: 6px;
   position: relative;
-  border: 3px solid red;
 `;
 
 export const Input = styled.input`
@@ -12,6 +12,8 @@ export const Input = styled.input`
 
 export const Popup = styled.div`
   background: #fff;
+  border-radius: 4px;
+  margin-top: 6px;
   position: absolute;
   width: 100%;
 `;

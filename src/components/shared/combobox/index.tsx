@@ -1,78 +1,89 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useRef } from 'react';
 
-import { ILocation } from '../../../types';
-import { getLocationFields, getSearchQuery } from '../../../utils';
+import * as Styled from './styles';
+import { ErrorMessage, Loader } from '../../shared';
 
-import { SharedCombobox } from './Combobox';
+type Props = {
+  ariaLabel: string;
+  comboboxName: string;
+  error?: Error;
+  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  input: string;
+  list: any;
+  loading: boolean;
+  onClick: (listItem: any) => void;
+  onClickOutside: () => void;
+  placeholder: string;
+}
 
-export const Combobox = () => {
-  const [input, setInput] = useState<string>('');
-  const [query, setQuery] = useState<string>('');
-  const [data, setData] = useState<ILocation[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<Error | undefined>(undefined);
+export const Combobox = ({
+  ariaLabel,
+  comboboxName,
+  error,
+  handleChange,
+  input,
+  list,
+  loading,
+  onClick,
+  onClickOutside,
+  placeholder,
+}: Props) => {
 
-  let searchTimeout: ReturnType<typeof setTimeout> = setTimeout(() => '', 1000);
+  const ariaControls = `${ comboboxName }-listbox`;
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (!event.target.value) {
-      setInput('');
-      setQuery('');
-      setData([]);
-      setLoading(false);
-      setError(undefined);
-    } else {
-      setLoading(true);
-      setInput(event.target.value);
-      clearTimeout(searchTimeout);
-      searchTimeout = setTimeout(() => {
-        setQuery(event.target.value && getSearchQuery(event.target.value));
-      }, 1000);
-    }
-  }
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!query) return;
+    const handleClick = (event: any) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        onClickOutside();
+      }
+    }
 
-    (() => {
-      fetch(query)
-        .then((response: any) => response.json())
-        .then((data: any) => {
-          setData(getLocationFields(data));
-          setLoading(false);
-        })
-        .catch((error: Error) => {
-          setError(error);
-          setLoading(false);
-        });
-    })();
-  }, [query]);
+    document.addEventListener('click', handleClick, true);
 
-  const reset = () => {
-    setInput('');
-    setQuery('');
-    setData([]);
-    setLoading(false);
-    setError(undefined);
-  }
+    return () => document.removeEventListener('click', handleClick, true);
+  }, [onClickOutside]);
 
-  const setLocation = (location: any) => {
-    console.log(location);
-    reset();
+  const loaderStyle = {
+    $borderRadius: '4px',
+    $height: '6px',
+    $margin: '0',
   }
 
   return (
-    <SharedCombobox
-      ariaLabel={ 'Searchbox for searching locations' }
-      comboboxName={ 'locations' }
-      error={ error }
-      handleChange={ handleChange }
-      input={ input }
-      list={ data }
-      loading={ loading }
-      onClick={ setLocation }
-      onClickOutside={ reset }
-      placeholder={ 'Enter the name of the location here..' }
-    />
+    <Styled.Combobox>
+      <Styled.Input
+        aria-controls={ ariaControls }
+        aria-expanded={ list.length === 0 ? false : true }
+        aria-label={ ariaLabel }
+        onChange={ handleChange }
+        placeholder={ placeholder }
+        role={ 'combobox' }
+        type={'search'}
+        value={ input }
+      />
+
+      <Styled.Popup ref={ ref }>
+        { loading && (
+          <Loader loading={ true } styleProps={ loaderStyle } />
+        ) }
+
+        { error && <ErrorMessage>Error: { error.message }</ErrorMessage> }
+
+        { !loading && list.length !== 0 && (
+          <Styled.ListBox id={ ariaControls } role={ 'listbox' }>
+            { list.map((listItem: any) => (
+              <Styled.ListItem
+                key={ listItem.id }
+                onClick={ () => onClick(listItem) }
+              >
+                { `${ listItem.name }` }
+              </Styled.ListItem>
+            )) }
+          </Styled.ListBox>
+        ) }
+      </Styled.Popup>
+    </Styled.Combobox>
   );
 }
