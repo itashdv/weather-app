@@ -13,8 +13,8 @@ it('has correct initial value on mount', () => {
   expect(getByRole('combobox')).toHaveValue('');
 });
 
-it('focuses and types correctly', async () => {
-  const { user, getByRole } = setup(<Search />);
+it('focuses and types correctly, showing and removing loader', async () => {
+  const { user, getByRole, findByRole, queryByRole } = setup(<Search />);
 
   await user.click(getByRole('combobox'));
 
@@ -22,23 +22,13 @@ it('focuses and types correctly', async () => {
 
   await user.keyboard('Botswana');
 
+  expect(await findByRole('status')).toBeInTheDocument();
+
   expect(getByRole('combobox')).toHaveValue('Botswana');
 
   await user.clear(getByRole('combobox'));
 
   expect(getByRole('combobox')).toHaveValue('');
-});
-
-it('shows loader upon typing and removes loader after clear', async () => {
-  const { user, getByRole, findByRole, queryByRole } = setup(<Search />);
-
-  await user.click(getByRole('combobox'));
-
-  await user.keyboard('Botswana');
-
-  expect(await findByRole('status')).toBeInTheDocument();
-
-  await user.clear(getByRole('combobox'));
 
   expect(queryByRole('status')).toEqual(null);
 });
