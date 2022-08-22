@@ -1,6 +1,6 @@
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
-import { AppContext } from '../../../context';
 
+import { AppContext } from '../../../context';
 import { ILocation } from '../../../types';
 import { getLocationFields, getSearchQuery } from '../../../utils';
 import { Combobox } from '../../shared';

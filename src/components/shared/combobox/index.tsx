@@ -1,7 +1,8 @@
 import { ChangeEvent, useEffect, useRef } from 'react';
 
 import * as Styled from './styles';
-import { ErrorMessage, Loader } from '../../shared';
+import { Searchbox } from './Searchbox';
+import { Popup } from './Popup';
 
 type Props = {
   ariaLabel: string;
@@ -45,45 +46,24 @@ export const Combobox = ({
     return () => document.removeEventListener('click', handleClick, true);
   }, [onClickOutside]);
 
-  const loaderStyle = {
-    $borderRadius: '4px',
-    $height: '6px',
-    $margin: '0',
-  }
-
   return (
     <Styled.Combobox ref={ ref }>
-      <Styled.Input
-        aria-controls={ ariaControls }
-        aria-expanded={ list.length === 0 ? false : true }
-        aria-label={ ariaLabel }
-        onChange={ handleChange }
+      <Searchbox
+        ariaControls={ ariaControls }
+        ariaLabel={ ariaLabel }
+        handleChange={ handleChange }
+        input={ input }
+        list={ list }
         placeholder={ placeholder }
-        role={ 'combobox' }
-        type={'search'}
-        value={ input }
       />
 
-      <Styled.Popup>
-        { loading && (
-          <Loader loading={ true } styleProps={ loaderStyle } />
-        ) }
-
-        { error && <ErrorMessage>Error: { error.message }</ErrorMessage> }
-
-        { !loading && list.length !== 0 && (
-          <Styled.ListBox id={ ariaControls } role={ 'listbox' }>
-            { list.map((listItem: any) => (
-              <Styled.ListItem
-                key={ listItem.id }
-                onClick={ () => onClick(listItem) }
-              >
-                { `${ listItem.name }` }
-              </Styled.ListItem>
-            )) }
-          </Styled.ListBox>
-        ) }
-      </Styled.Popup>
+      <Popup
+        ariaControls={ ariaControls }
+        error={ error }
+        loading={ loading }
+        onClick={ onClick }
+        list={ list }
+      />
     </Styled.Combobox>
   );
 }
