@@ -8,38 +8,36 @@ export const useLocation = () => {
   });
 
   useEffect(() => {
-    (() => {
-      if (!navigator.geolocation) {
-        setStatus(status => ({
-          ...status,
-          error: {
-            name: 'Not supported',
-            message: 'Geolocation is not supported by your browser!',
-          }
-        }));
-      } else {
-        setStatus({ loading: true });
-  
-        setTimeout(() => {
-          navigator.geolocation.getCurrentPosition(position => {
-            const { latitude, longitude } = position.coords;
-  
-            setStatus({
-              data: populateCurrentLocation(latitude, longitude),
-              loading: false,
-            });
-          }, error => {
-            setStatus({
-              error: {
-                name: 'Geolocation error',
-                message: error.message,
-              },
-              loading: false,
-            });
+    if (!navigator.geolocation) {
+      setStatus(status => ({
+        ...status,
+        error: {
+          name: 'Not supported',
+          message: 'Geolocation is not supported by your browser!',
+        }
+      }));
+    } else {
+      setStatus({ loading: true });
+
+      setTimeout(() => {
+        navigator.geolocation.getCurrentPosition(position => {
+          const { latitude, longitude } = position.coords;
+
+          setStatus({
+            data: populateCurrentLocation(latitude, longitude),
+            loading: false,
           });
-        }, 1000);
-      }
-    })();
+        }, error => {
+          setStatus({
+            error: {
+              name: 'Geolocation error',
+              message: error.message,
+            },
+            loading: false,
+          });
+        });
+      }, 1000);
+    }
   }, []);
 
   return { ...status };

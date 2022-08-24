@@ -8,20 +8,18 @@ export const useFetch = (url: string) => {
   });
 
   useEffect(() => {
-    (() => {
-      setStatus({ loading: true });
+    setStatus({ loading: true });
 
-      fetch(url)
-        .then((response: any) => response.json())
-        .then((data: any) => setStatus({
-          data: setWeatherData(data),
-          loading: false,
-        }))
-        .catch((error: Error) => setStatus({
-          error,
-          loading: false,
-        }));
-    })();
+    fetch(url)
+      .then((response: any) => response.json())
+      .then((data: any) => setStatus({
+        data: setWeatherData(data),
+        loading: false,
+      }))
+      .catch((error: Error) => setStatus({
+        error,
+        loading: false,
+      }));
   }, [url]);
   
   return { ...status };

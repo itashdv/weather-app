@@ -10,20 +10,18 @@ export const useQueryFetch = (url: string) => {
   useEffect(() => {
     if (!url) return setStatus({ data: [], loading: false });
 
-    (() => {
-      setStatus({ loading: true });
+    setStatus({ loading: true });
 
-      fetch(url)
-        .then((response: any) => response.json())
-        .then((data: any) => setStatus({
-          data: getLocationFields(data),
-          loading: false,
-        }))
-        .catch((error: Error) => setStatus({
-          error,
-          loading: false,
-        }));
-    })();
+    fetch(url)
+      .then((response: any) => response.json())
+      .then((data: any) => setStatus({
+        data: getLocationFields(data),
+        loading: false,
+      }))
+      .catch((error: Error) => setStatus({
+        error,
+        loading: false,
+      }));
   }, [url]);
 
   return { ...status };
