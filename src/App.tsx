@@ -8,14 +8,17 @@ import {
   SelectedLocations
 } from './components';
 
+import { NewComponent } from './components/feature/NewComponent';
+
 function App() {
   return (
     <AppProvider>
       <Styled.App>
         <Header />
-        <Search />
+        <NewComponent />
+        {/* <Search />
         <CurrentLocation />
-        <SelectedLocations />
+        <SelectedLocations /> */}
       </Styled.App>
     </AppProvider>
   );
