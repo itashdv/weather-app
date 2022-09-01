@@ -1,43 +1,28 @@
 import { useEffect, useState } from 'react';
+
+import { getPosition } from '../api';
 import { ILocationFetch } from '../types';
 import { populateCurrentLocation } from '../utils';
 
 export const useLocation = () => {
-  const [status, setStatus] = useState<ILocationFetch>({
-    loading: false,
-  });
+  const [status, setStatus] = useState<ILocationFetch>({ loading: false });
 
   useEffect(() => {
-    if (!navigator.geolocation) {
-      setStatus(status => ({
-        ...status,
-        error: {
-          name: 'Not supported',
-          message: 'Geolocation is not supported by your browser!',
-        }
-      }));
-    } else {
-      setStatus({ loading: true });
+    (async () => {
+      try {
+        setStatus({ loading: true });
 
-      setTimeout(() => {
-        navigator.geolocation.getCurrentPosition(position => {
-          const { latitude, longitude } = position.coords;
+        const { coords: { latitude, longitude } } = await getPosition();
 
-          setStatus({
-            data: populateCurrentLocation(latitude, longitude),
-            loading: false,
-          });
-        }, error => {
-          setStatus({
-            error: {
-              name: 'Geolocation error',
-              message: error.message,
-            },
-            loading: false,
-          });
-        });
-      }, 1000);
-    }
+        const data = populateCurrentLocation(latitude, longitude);
+
+        setStatus({ data, loading: false });
+      } catch (err: any) {
+        const error = { name: 'Geolocation error', message: err.message }
+
+        setStatus({ error, loading: false });
+      }
+    })();
   }, []);
 
   return { ...status };

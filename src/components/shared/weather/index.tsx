@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import * as Styled from './styles';
+
 import { CommonProps, IconProps, WeatherProps } from '../../../types';
 
 import { Footer } from './Footer';
-import { InfoBox } from './InfoBox';
 import { IconBox } from './IconBox';
+import { InfoBox } from './InfoBox';
+
+import * as Styled from './styles';
 
 type Props = {
   onRemove?: () => void;

@@ -1,7 +1,9 @@
 import { useLocation } from '../../../hooks';
+
 import { ErrorMessage, Loader } from '../../shared';
 
 import { Location } from '../location';
+
 import * as Styled from './styles';
 
 export const CurrentLocation = () => {
@@ -14,13 +16,11 @@ export const CurrentLocation = () => {
 
   return (
     <Styled.CurrentLocation>
-      { loading ? (
-        <Loader loading={ loading } styleProps={ loaderStyle } />
-      ) : error ? (
-        <ErrorMessage>{ error.message }</ErrorMessage>
-      ) : data ? (
-        <Location location={ data[0] } />
-      ) : null }
+      { loading && <Loader loading={ loading } styleProps={ loaderStyle } /> }
+
+      { error && <ErrorMessage>{ error.message }</ErrorMessage> }
+      
+      { data && <Location location={ data[0] } /> }
     </Styled.CurrentLocation>
   );
 }

@@ -1,42 +1,45 @@
 import { ErrorMessage, Loader } from '../../shared';
 
-import * as Styled from './styles';
 import { ListBox } from './ListBox';
+
+import * as Styled from './styles';
 
 type Props = {
   ariaControls: string;
   error?: Error;
-  loading: boolean;
-  onClick: (listItem: any) => void;
   list: any;
+  loading: boolean;
+  onSelect: (listItem: any) => void;
+  visible: boolean;
 }
 
 export const Popup = ({
   ariaControls,
   error,
-  loading,
-  onClick,
   list,
+  loading,
+  onSelect,
+  visible,
 }: Props) => {
-
   const loaderStyle = {
     $borderRadius: '4px',
     $height: '6px',
     $margin: '0',
   }
 
-  const content = loading ?
-    <Loader loading={ true } styleProps={ loaderStyle } /> : error ?
-    <ErrorMessage>Error: { error.message }</ErrorMessage> :
-    <ListBox
-      ariaControls={ ariaControls }
-      onClick={ onClick }
-      list={ list }
-    />
-
   return (
-    <Styled.Popup>
-      { content }
+    <Styled.Popup $visibility={ visible }>
+      { loading ? (
+        <Loader loading={ true } styleProps={ loaderStyle } />
+      ) : error ? (
+        <ErrorMessage>Error: { error.message }</ErrorMessage>
+      ) : (
+        <ListBox
+          ariaControls={ ariaControls }
+          list={ list }
+          onClick={ onSelect }
+        />
+      ) }
     </Styled.Popup>
   );
 }

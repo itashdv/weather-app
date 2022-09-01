@@ -1,28 +1,37 @@
-import { useState, useEffect } from 'react';
-import { ILocationFetch } from '../types';
-import { getLocationFields } from '../utils';
+import { ChangeEvent, useEffect, useState } from 'react';
 
-export const useQueryFetch = (url: string) => {
-  const [status, setStatus] = useState<ILocationFetch>({
-    loading: false,
-  });
+import { IQueryFetch } from '../types';
+import { QUERY_FETCH_INITIAL_STATE } from '../constants';
+
+import { useDebouncedValue } from './useDebouncedValue';
+
+const initialState = QUERY_FETCH_INITIAL_STATE;
+
+export const useQueryFetch = (getFetchQuery: (value: string) => string) => {
+  const [status, setStatus] = useState<IQueryFetch>(initialState);
+
+  const debouncedQuery = useDebouncedValue(status.input, 1000, getFetchQuery);
+
+  const reset = () => setStatus(initialState);
+
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => setStatus(
+    event.target.value
+      ? { ...initialState, input: event.target.value, loading: true }
+      : initialState
+  );
 
   useEffect(() => {
-    if (!url) return setStatus({ data: [], loading: false });
+    if (!debouncedQuery) return setStatus(initialState);
 
-    setStatus({ loading: true });
-
-    fetch(url)
+    fetch(debouncedQuery)
       .then((response: any) => response.json())
-      .then((data: any) => setStatus({
-        data: getLocationFields(data),
-        loading: false,
-      }))
-      .catch((error: Error) => setStatus({
-        error,
-        loading: false,
-      }));
-  }, [url]);
+      .then((data: any) => {
+        setStatus(status => ({ ...status, data, loading: false }));
+      })
+      .catch((error: Error) => {
+        setStatus(status => ({ ...status, error, loading: false }));
+      });
+  }, [debouncedQuery]);
 
-  return { ...status };
+  return { ...status, onChange, reset };
 }

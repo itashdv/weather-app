@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { IWeatherFetch } from "../types";
 import { setWeatherData } from "../utils";
 

@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+
 import { API_KEY, CITY_LIMIT } from "../constants";
 
 const getLocationUrlByCoords = (lat: number, lon: number) =>
@@ -11,7 +12,7 @@ const getLocationFields = (locations: any) =>
   locations.map((location: any) => ({
     id: uuidv4(),
     country: location.country,
-    name: `${ location.name } (${ location.country })`,
+    label: `${ location.name } (${ location.country })`,
     url: getLocationUrlByCoords(location.lat, location.lon),
   }));
 

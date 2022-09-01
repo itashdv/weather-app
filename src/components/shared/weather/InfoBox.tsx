@@ -1,7 +1,8 @@
-import * as Styled from './styles';
 import { CommonProps, MinimizedProps, WeatherProps } from '../../../types';
 
 import { Heading, Text } from '../../shared';
+
+import * as Styled from './styles';
 
 type Props = {
   description: string;
@@ -24,6 +25,12 @@ export const InfoBox = ({
   temp,
   wind,
 }: Props & CommonProps & MinimizedProps & WeatherProps) => {
+  const descriptionTextStyle = {
+    $align: 'left',
+    $color: '#fff',
+    $size: !minimized ? '20px' : '14px',
+  }
+
   const nameHeadingStyle = {
     $color: '#fff',
     $size: '22px',
@@ -32,12 +39,6 @@ export const InfoBox = ({
   const tempHeadingStyle = {
     $color: '#fff',
     $size: '24px',
-  }
-
-  const descriptionTextStyle = {
-    $align: 'left',
-    $color: '#fff',
-    $size: !minimized ? '20px' : '14px',
   }
 
   const textStyle = {

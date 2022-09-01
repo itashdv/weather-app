@@ -1,19 +1,19 @@
-import { ChangeEvent, useEffect, useRef } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 
-import * as Styled from './styles';
 import { Searchbox } from './Searchbox';
 import { Popup } from './Popup';
+
+import * as Styled from './styles';
 
 type Props = {
   ariaLabel: string;
   comboboxName: string;
   error?: Error;
-  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
   input: string;
   list: any;
   loading: boolean;
-  onClick: (listItem: any) => void;
-  onClickOutside: () => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onSelect: (listItem: any) => void;
   placeholder: string;
 }
 
@@ -21,48 +21,49 @@ export const Combobox = ({
   ariaLabel,
   comboboxName,
   error,
-  handleChange,
   input,
   list,
   loading,
-  onClick,
-  onClickOutside,
+  onChange,
+  onSelect,
   placeholder,
 }: Props) => {
-
   const ariaControls = `${ comboboxName }-listbox`;
 
-  const ref = useRef<HTMLDivElement>(null);
+  const [popup, setPopup] = useState(false);
+
+  const [visible, setVisible] = useState(false);
+
+  const onBlur = () => setPopup(false);
+
+  const onFocus = () => setPopup(true);
 
   useEffect(() => {
-    const handleClick = (event: any) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        onClickOutside();
-      }
-    }
-
-    document.addEventListener('click', handleClick, true);
-
-    return () => document.removeEventListener('click', handleClick, true);
-  }, [onClickOutside]);
+    const id = setTimeout(() => setVisible(popup), 200);
+    
+    return () => clearTimeout(id);
+  }, [popup]);
 
   return (
-    <Styled.Combobox ref={ ref }>
+    <Styled.Combobox>
       <Searchbox
         ariaControls={ ariaControls }
+        ariaExpanded={ list.length === 0 ? false : true }
         ariaLabel={ ariaLabel }
-        handleChange={ handleChange }
         input={ input }
-        list={ list }
+        onBlur={ onBlur }
+        onChange={ onChange }
+        onFocus={ onFocus }
         placeholder={ placeholder }
       />
 
       <Popup
         ariaControls={ ariaControls }
         error={ error }
-        loading={ loading }
-        onClick={ onClick }
         list={ list }
+        loading={ loading }
+        onSelect={ onSelect }
+        visible={ visible }
       />
     </Styled.Combobox>
   );

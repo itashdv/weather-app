@@ -8,6 +8,7 @@ type Props = {
 
 export const Image = ({ alt, src, styleProps }: Props) => {
   const { $height, $width } = styleProps;
+  
   return (
     <Styled.Image
       alt={ alt }

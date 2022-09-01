@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+type PopupProps = {
+  $visibility: boolean;
+}
+
 export const Combobox = styled.div`
   margin: 6px;
   position: relative;
@@ -7,14 +11,6 @@ export const Combobox = styled.div`
 
 export const Input = styled.input`
   padding: 4px;
-  width: 100%;
-`;
-
-export const Popup = styled.div`
-  background: #fff;
-  border-radius: 4px;
-  margin-top: 6px;
-  position: absolute;
   width: 100%;
 `;
 
@@ -39,4 +35,13 @@ export const ListItem = styled.li`
     border: 1px solid #c3c3c3;
   }
   border-radius: 2px;
+`;
+
+export const Popup = styled.div<PopupProps>`
+  background: #fff;
+  border-radius: 4px;
+  display: ${ props => props.$visibility ? 'block' : 'none' };
+  margin-top: 6px;
+  position: absolute;
+  width: 100%;
 `;

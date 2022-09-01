@@ -1,7 +1,8 @@
-import * as Styled from './styles';
-import { CommonProps, IconProps, MinimizedProps } from '../../../types'
+import { CommonProps, IconProps, MinimizedProps } from '../../../types';
 
 import { Heading, Image, LinkButton } from '../../shared';
+
+import * as Styled from './styles';
 
 type Props = {
   onClick: () => void;
@@ -20,13 +21,15 @@ export const IconBox = ({
     $color: '#fff',
     $size: '24px',
   }
-  const linkButtonStyle = {
-    $color: '#fff',
-    $size: '14px',
-  }
+
   const imageStyle = {
     $height: '100px',
     $width: '100px',
+  }
+  
+  const linkButtonStyle = {
+    $color: '#fff',
+    $size: '14px',
   }
 
   return (

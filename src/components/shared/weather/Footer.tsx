@@ -1,6 +1,6 @@
-import * as Styled from './styles';
-
 import { LinkButton } from '../../shared';
+
+import * as Styled from './styles';
 
 type Props = {
   leftText: string;

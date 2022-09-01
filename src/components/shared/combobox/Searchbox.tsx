@@ -4,31 +4,35 @@ import * as Styled from './styles';
 
 type Props = {
   ariaControls: string;
+  ariaExpanded: boolean;
   ariaLabel: string;
-  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
   input: string;
-  list: any;
+  onBlur?: () => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: () => void;
   placeholder: string;
 }
 
 export const Searchbox = ({
   ariaControls,
+  ariaExpanded,
   ariaLabel,
-  handleChange,
   input,
-  list,
+  onBlur,
+  onChange,
+  onFocus,
   placeholder,
-}: Props) => {
-  return (
-    <Styled.Input
-      aria-controls={ ariaControls }
-      aria-expanded={ list.length === 0 ? false : true }
-      aria-label={ ariaLabel }
-      onChange={ handleChange }
-      placeholder={ placeholder }
-      role={ 'combobox' }
-      type={'search'}
-      value={ input }
-    />
-  );
-}
+}: Props) => (
+  <Styled.Input
+    aria-controls={ ariaControls }
+    aria-expanded={ ariaExpanded }
+    aria-label={ ariaLabel }
+    onBlur={ onBlur }
+    onChange={ onChange }
+    onFocus={ onFocus }
+    placeholder={ placeholder }
+    role={ 'combobox' }
+    type={'search'}
+    value={ input }
+  />
+);

@@ -29,6 +29,13 @@ export interface ILocationFetch {
   loading: boolean;
 }
 
+export interface IQueryFetch {
+  data: any;
+  error?: Error;
+  input: string;
+  loading: boolean;
+}
+
 export interface IAppContext {
   locations: ILocation[];
   addLocation: (location: ILocation) => void;
