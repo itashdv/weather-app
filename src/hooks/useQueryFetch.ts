@@ -1,7 +1,8 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
 import { IQueryFetch } from '../types';
 import { QUERY_FETCH_INITIAL_STATE } from '../constants';
+import { fetchData } from '../api';
 
 import { useDebouncedValue } from './useDebouncedValue';
 
@@ -9,6 +10,8 @@ const initialState = QUERY_FETCH_INITIAL_STATE;
 
 export const useQueryFetch = (getFetchQuery: (value: string) => string) => {
   const [status, setStatus] = useState<IQueryFetch>(initialState);
+
+  const mounted = useRef(true);
 
   const debouncedQuery = useDebouncedValue(status.input, 1000, getFetchQuery);
 
@@ -21,16 +24,27 @@ export const useQueryFetch = (getFetchQuery: (value: string) => string) => {
   );
 
   useEffect(() => {
-    if (!debouncedQuery) return setStatus(initialState);
+    mounted.current = true;
 
-    fetch(debouncedQuery)
-      .then((response: any) => response.json())
-      .then((data: any) => {
-        setStatus(status => ({ ...status, data, loading: false }));
-      })
-      .catch((error: Error) => {
-        setStatus(status => ({ ...status, error, loading: false }));
-      });
+    (async () => {
+      try {
+        if (!debouncedQuery && mounted.current) return setStatus(initialState);
+
+        const data = await fetchData(debouncedQuery);
+
+        if (mounted.current) {
+          setStatus(status => ({ ...status, data, loading: false }));
+        }
+      } catch (error: any) {
+        if (mounted.current) {
+          setStatus(status => ({ ...status, error, loading: false }));
+        }
+      }
+    })();
+
+    return () => {
+      mounted.current = false;
+    }
   }, [debouncedQuery]);
 
   return { ...status, onChange, reset };

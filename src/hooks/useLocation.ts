@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { getPosition } from '../api';
 import { ILocationFetch } from '../types';
@@ -7,7 +7,11 @@ import { populateCurrentLocation } from '../utils';
 export const useLocation = () => {
   const [status, setStatus] = useState<ILocationFetch>({ loading: false });
 
+  const mounted = useRef(true);
+
   useEffect(() => {
+    mounted.current = true;
+
     (async () => {
       try {
         setStatus({ loading: true });
@@ -16,13 +20,17 @@ export const useLocation = () => {
 
         const data = populateCurrentLocation(latitude, longitude);
 
-        setStatus({ data, loading: false });
+        if (mounted.current) setStatus({ data, loading: false });
       } catch (err: any) {
         const error = { name: 'Geolocation error', message: err.message }
 
-        setStatus({ error, loading: false });
+        if (mounted.current) setStatus({ error, loading: false });
       }
     })();
+
+    return () => {
+      mounted.current = false;
+    }
   }, []);
 
   return { ...status };
