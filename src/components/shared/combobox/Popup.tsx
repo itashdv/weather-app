@@ -1,5 +1,4 @@
 import { ErrorMessage, Loader } from '../../shared';
-
 import { ListBox } from './ListBox';
 
 import * as Styled from './styles';
@@ -30,7 +29,7 @@ export const Popup = ({
   return (
     <Styled.Popup $visibility={ visible }>
       { loading ? (
-        <Loader loading={ true } styleProps={ loaderStyle } />
+        <Loader styleProps={ loaderStyle } />
       ) : error ? (
         <ErrorMessage>Error: { error.message }</ErrorMessage>
       ) : (

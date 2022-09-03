@@ -32,9 +32,9 @@ const setWeatherData = (data: any) => ({
 });
 
 export {
-  getLocationUrlByCoords,
+  setWeatherData,
   getSearchQuery,
   getLocationFields,
+  getLocationUrlByCoords,
   populateCurrentLocation,
-  setWeatherData,
 }

@@ -6,14 +6,7 @@ export type Props = {
   $margin: string;
 }
 
-export const LoadingFalse = styled.div<Props>`
-  background: #37B3FB;
-  border-radius: ${ props => props.$borderRadius };
-  height: ${ props => props.$height };
-  margin: ${ props => props.$margin };
-`;
-
-export const LoadingTrue = styled.div<Props>`
+export const Loader = styled.div<Props>`
   border-radius: ${ props => props.$borderRadius };
   height: ${ props => props.$height };
   margin: ${ props => props.$margin };

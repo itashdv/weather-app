@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import { CommonProps, IconProps, WeatherProps } from '../../../types';
-
 import { Footer } from './Footer';
 import { IconBox } from './IconBox';
 import { InfoBox } from './InfoBox';

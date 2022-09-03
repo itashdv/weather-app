@@ -1,5 +1,4 @@
 import { useFetch } from '../../../hooks';
-
 import { ErrorMessage, Loader, Weather } from "../../shared";
 
 type Props = {
@@ -19,6 +18,7 @@ export const Location = ({ location, onRemove }: Props) => {
   const removeLocation = onRemove ? () => onRemove(id) : undefined;
 
   const loaderStyle = {
+    $borderRadius: '4px',
     $height: '6px',
     $margin: '4px',
   }
@@ -26,7 +26,7 @@ export const Location = ({ location, onRemove }: Props) => {
   return (
     <div role={'contentinfo'}>
       { loading ? (
-        <Loader loading={ loading } styleProps={ loaderStyle } />
+        <Loader styleProps={ loaderStyle } />
       ) : error ? (
         <ErrorMessage>{ error.message }</ErrorMessage>
       ) : data ? (

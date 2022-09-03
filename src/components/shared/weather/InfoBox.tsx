@@ -1,5 +1,4 @@
 import { CommonProps, MinimizedProps, WeatherProps } from '../../../types';
-
 import { Heading, Text } from '../../shared';
 
 import * as Styled from './styles';

@@ -1,12 +1,14 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
 import { IQueryFetch } from '../types';
-import { QUERY_FETCH_INITIAL_STATE } from '../constants';
 import { fetchData } from '../api';
-
 import { useDebouncedValue } from './useDebouncedValue';
 
-const initialState = QUERY_FETCH_INITIAL_STATE;
+const initialState = {
+  data: [],
+  input: '',
+  loading: false
+}
 
 export const useQueryFetch = (getFetchQuery: (value: string) => string) => {
   const [status, setStatus] = useState<IQueryFetch>(initialState);

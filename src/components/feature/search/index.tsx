@@ -3,7 +3,6 @@ import { useContext } from 'react';
 import { AppContext } from '../../../context';
 import { useQueryFetch } from '../../../hooks';
 import { getSearchQuery, getLocationFields } from '../../../utils';
-
 import { Combobox } from '../../shared';
 
 export const Search = () => {

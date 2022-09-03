@@ -1,5 +1,4 @@
 import { CommonProps, IconProps, MinimizedProps } from '../../../types';
-
 import { Heading, Image, LinkButton } from '../../shared';
 
 import * as Styled from './styles';
