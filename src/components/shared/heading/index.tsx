@@ -9,11 +9,12 @@ type Props = {
 }
 
 export const Heading = ({ children, role, styleProps }: Props) => {
-  const { $color, $size } = styleProps;
+  const { $align, $color, $size } = styleProps;
 
   return (
     <Styled.Heading
       role={ role }
+      $align={ $align }
       $color={ $color }
       $size={ $size }
     >

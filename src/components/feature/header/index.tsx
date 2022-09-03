@@ -4,6 +4,7 @@ import * as Styled from './styles';
 
 export const Header = () => {
   const headingStyle = {
+    $align: 'center',
     $color: '#fff',
     $size: '24px',
   }
