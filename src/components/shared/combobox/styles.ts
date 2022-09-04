@@ -21,6 +21,7 @@ export const ListBox = styled.ul`
 `;
 
 export const ListItem = styled.li`
+  color: #206993;
   cursor: pointer;
   margin: 6px 0;
   padding: 4px;
@@ -39,6 +40,8 @@ export const ListItem = styled.li`
 
 export const Popup = styled.div<PopupProps>`
   background: #fff;
+  border: 1px solid #206993;
+  box-shadow: 5px 10px rgba(68, 68, 68, 0.6);
   border-radius: 4px;
   display: ${ props => props.$visibility ? 'block' : 'none' };
   margin-top: 6px;

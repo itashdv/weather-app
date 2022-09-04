@@ -1,10 +1,11 @@
-import { createContext, useState, ReactNode, FC } from 'react';
+import { createContext, useReducer, ReactNode, FC } from 'react';
 
+import { reducer } from './reducer';
 import { ILocation, IAppContext } from '../types';
 
-type ProviderProps = {
-  children: ReactNode;
-}
+const initialValue = { locations: [] }
+
+type ProviderProps = { children: ReactNode }
 
 export const AppContext = createContext<IAppContext>({
   locations: [],
@@ -13,13 +14,15 @@ export const AppContext = createContext<IAppContext>({
 });
 
 export const AppProvider: FC<ProviderProps> = ({ children }) => {
-  const [locations, setLocations] = useState<ILocation[]>([]);
+  const [state, dispatch] = useReducer(reducer, initialValue);
+
+  const { locations } = state;
 
   const addLocation = (location: ILocation) =>
-    setLocations((locations) => ([...locations, location]));
+    dispatch({ type: 'add', payload: location });
 
   const removeLocation = (id: string) =>
-    setLocations((locations) => locations.filter(l => l.id !== id));
+    dispatch({ type: 'remove', payload: id });
 
   return (
     <AppContext.Provider value={{
