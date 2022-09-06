@@ -5,7 +5,6 @@ type PopupProps = {
 }
 
 export const Combobox = styled.div`
-  margin: 6px;
   position: relative;
 `;
 

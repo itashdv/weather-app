@@ -1,13 +1,11 @@
-import { CurrentLocation } from "./feature/current-location";
 import { Header } from "./feature/header";
 import { Location } from "./feature/location";
 import { Search } from "./feature/search";
-import { SelectedLocations } from "./feature/selected-locations";
+import { Locations } from "./feature/locations";
 
 export {
-  CurrentLocation,
   Header,
   Location,
   Search,
-  SelectedLocations
+  Locations,
 }

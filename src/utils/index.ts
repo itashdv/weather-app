@@ -16,9 +16,11 @@ const getLocationFields = (locations: any) =>
     url: getLocationUrlByCoords(location.lat, location.lon),
   }));
 
-const populateCurrentLocation = (lat: number, lon: number) => (
-  [{ id: uuidv4(), url: getLocationUrlByCoords(lat, lon) }]
-);
+const populateCurrentLocation = (lat: number, lon: number) => ([{
+  id: uuidv4(),
+  url: getLocationUrlByCoords(lat, lon),
+  current: true,
+}]);
 
 const setWeatherData = (data: any) => ({
   name: data.name,

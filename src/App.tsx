@@ -2,10 +2,9 @@ import { AppProvider } from './context';
 import * as Styled from './styles';
 
 import {
-  CurrentLocation,
   Header,
   Search,
-  SelectedLocations
+  Locations,
 } from './components';
 
 function App() {
@@ -14,8 +13,7 @@ function App() {
       <Styled.App>
         <Header />
         <Search />
-        <CurrentLocation />
-        <SelectedLocations />
+        <Locations />
       </Styled.App>
     </AppProvider>
   );

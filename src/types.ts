@@ -18,6 +18,7 @@ export interface IWeatherFetch {
 export interface ILocation {
   id: string;
   url: string;
+  current?: boolean;
   country?: string;
   name?: string;
   weather?: IWeather;

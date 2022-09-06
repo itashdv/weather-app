@@ -5,6 +5,8 @@ import { useQueryFetch } from '../../../hooks';
 import { getSearchQuery, getLocationFields } from '../../../utils';
 import { Combobox } from '../../shared';
 
+import * as Styled from './styles';
+
 export const Search = () => {
   const { addLocation } = useContext(AppContext);
 
@@ -23,16 +25,18 @@ export const Search = () => {
   }
 
   return (
-    <Combobox
-      ariaLabel={ 'Searchbox for searching locations' }
-      comboboxName={ 'locations' }
-      placeholder={ 'Enter the name of the location here..' }
-      list={ getLocationFields(data) }
-      error={ error }
-      loading={ loading }
-      input={ input }
-      onChange={ onChange }
-      onSelect={ onSelect }
-    />
+    <Styled.Search>
+      <Combobox
+        ariaLabel={ 'Searchbox for searching locations' }
+        comboboxName={ 'locations' }
+        placeholder={ 'Enter the name of the location here..' }
+        list={ getLocationFields(data) }
+        error={ error }
+        loading={ loading }
+        input={ input }
+        onChange={ onChange }
+        onSelect={ onSelect }
+      />
+    </Styled.Search>
   );
 }

@@ -1,12 +1,9 @@
 import { useFetch } from '../../../hooks';
 import { ErrorMessage, Loader, Weather } from "../../shared";
+import { ILocation } from '../../../types';
 
 type Props = {
-  location: {
-    id: string;
-    name?: string;
-    url: string;
-  },
+  location: ILocation;
   onRemove?: (id: string) => void;
 }
 
