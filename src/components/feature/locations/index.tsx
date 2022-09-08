@@ -5,6 +5,8 @@ import { AppContext } from '../../../context';
 import { ErrorMessage, Text } from '../../shared';
 import { Location } from '../location';
 
+import * as Styled from './styles';
+
 export const Locations = () => {
   const context = useRef(useContext(AppContext));
 
@@ -25,7 +27,7 @@ export const Locations = () => {
   }
 
   return (
-    <div>
+    <Styled.Locations>
       { loading && (
         <Text styleProps={ textStyle }>
           Getting your current location..
@@ -49,6 +51,6 @@ export const Locations = () => {
           }
         />
       )) }
-    </div>
+    </Styled.Locations>
   );
 }
