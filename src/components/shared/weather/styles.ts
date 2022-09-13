@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const Weather = styled.article`
   background-color: #206993;
-  margin: 6px auto;
   padding: 14px;
+  margin-bottom: 6px;
 `;
 
 export const Content = styled.div`
