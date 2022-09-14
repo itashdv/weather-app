@@ -11,7 +11,13 @@ type Action =
 export const reducer = ({ locations }: State, { type, payload }: Action) => {
   switch(type) {
     case 'add':
-      return { locations: [...locations, payload] }
+      const currentLocations = locations.filter(location => location.current);
+
+      const state = currentLocations.length !== 0 && payload.current
+        ? { locations }
+        : { locations: [...locations, payload] }
+
+      return state;
     case 'remove':
       return {
         locations: locations.filter(location => location.id !== payload)
