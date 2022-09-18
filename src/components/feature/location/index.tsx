@@ -37,6 +37,7 @@ export const Location = ({ location, onRemove }: Props) => {
           onRemove={ removeLocation }
           temp={ data.temp }
           wind={ data.wind }
+          id={ id }
         />
       ) : null }
     </div>

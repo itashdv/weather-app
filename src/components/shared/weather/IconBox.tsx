@@ -1,20 +1,22 @@
+import { Link } from 'react-router-dom';
+
 import { CommonProps, IconProps, MinimizedProps } from '../../../types';
-import { Heading, Image, LinkButton } from '../../shared';
+import { Heading, Image } from '../../shared';
 
 import * as Styled from './styles';
 
 type Props = {
-  onClick: () => void;
   text: string;
+  id: string;
 }
 
 export const IconBox = ({
   description,
   iconUrl,
   minimized,
-  onClick,
   temp,
   text,
+  id,
 }: Props & CommonProps & IconProps & MinimizedProps) => {
   const headingStyle = {
     $color: '#fff',
@@ -25,10 +27,10 @@ export const IconBox = ({
     $height: '100px',
     $width: '100px',
   }
-  
+
   const linkButtonStyle = {
-    $color: '#fff',
-    $size: '14px',
+    color: '#fff',
+    size: '14px',
   }
 
   return (
@@ -38,11 +40,12 @@ export const IconBox = ({
           <Heading styleProps={ headingStyle }>
             { temp }&deg;C
           </Heading>
-          <LinkButton
-            text={ text }
-            onClick={ onClick }
-            styleProps={ linkButtonStyle }
-          />
+          <Link
+            style={ linkButtonStyle }
+            to={ `/locations/${ id }` }
+          >
+            { text }
+          </Link>
         </>
       ) : (
         <Image

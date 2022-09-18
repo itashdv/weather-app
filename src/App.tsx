@@ -1,10 +1,11 @@
+import { Outlet } from 'react-router-dom';
+
 import { AppProvider } from './context';
 import * as Styled from './styles';
 
 import {
   Header,
   Search,
-  Locations,
 } from './components';
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
       <Styled.App>
         <Header />
         <Search />
-        <Locations />
+        <Outlet />
       </Styled.App>
     </AppProvider>
   );

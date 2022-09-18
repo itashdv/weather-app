@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { Heading } from '../../shared';
 
 import * as Styled from './styles';
@@ -11,9 +13,11 @@ export const Header = () => {
 
   return (
     <Styled.Header>
-      <Heading role={ 'heading' } styleProps={ headingStyle }>
-        Welcome to Weather App!
-      </Heading>
+      <Link to="/">
+        <Heading role={ 'heading' } styleProps={ headingStyle }>
+          Welcome to Weather App!
+        </Heading>
+      </Link>
     </Styled.Header>
   );
 }

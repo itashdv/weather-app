@@ -9,6 +9,7 @@ import * as Styled from './styles';
 
 type Props = {
   onRemove?: () => void;
+  id: string;
 }
 
 export const Weather = ({
@@ -19,12 +20,11 @@ export const Weather = ({
   min,
   name,
   onRemove,
+  id,
   temp,
   wind,
 }: Props & CommonProps & IconProps & WeatherProps) => {
   const [minimized, setMinimized] = useState<boolean>(true);
-
-  const maximize = () => setMinimized(false);
 
   const minimize = () => setMinimized(true);
 
@@ -45,9 +45,9 @@ export const Weather = ({
           description={ description }
           iconUrl={ iconUrl }
           minimized={ minimized }
-          onClick={ maximize }
           temp={ temp }
           text={ 'Details' }
+          id={ id }
         />
       </Styled.Content>
       { !minimized && (

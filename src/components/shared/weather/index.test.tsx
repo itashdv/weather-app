@@ -17,6 +17,7 @@ const props = {
   onRemove: () => {},
   temp: 13,
   wind: 5,
+  id: 'id123',
 }
 
 it('renders properly on initial mount', () => {

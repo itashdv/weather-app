@@ -4,19 +4,42 @@ import ReactDOM from 'react-dom/client';
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
+  Navigate,
+  useParams,
 } from 'react-router-dom';
 
 import App from './App';
-import { ErrorPage } from './components';
+import { ErrorPage, Locations } from './components';
 import './index.css';
+
+const Location = () => {
+  const { locationId } = useParams();
+
+  return (
+    <div>{ locationId }</div>
+  );
+}
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <ErrorPage />
-  }
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '/',
+        element: <Locations />,
+      },
+      {
+        path: '/locations',
+        element: <Navigate to='/' />,
+      },
+      {
+        path: 'locations/:locationId',
+        element: <Location />,
+      },
+    ],
+  },
 ]);
 
 const root = ReactDOM.createRoot(
