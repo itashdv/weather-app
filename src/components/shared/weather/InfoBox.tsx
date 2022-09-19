@@ -1,9 +1,12 @@
+import { Link } from 'react-router-dom';
+
 import { CommonProps, MinimizedProps, WeatherProps } from '../../../types';
 import { Heading, Text } from '../../shared';
 
 import * as Styled from './styles';
 
 type Props = {
+  id: string;
   description: string;
   feelsLike: number;
   max: number;
@@ -15,6 +18,7 @@ type Props = {
 }
 
 export const InfoBox = ({
+  id,
   description,
   feelsLike,
   max,
@@ -49,7 +53,12 @@ export const InfoBox = ({
   return (
     <Styled.InfoBox>
       <Heading styleProps={ nameHeadingStyle }>
-        { name }
+        <Link
+          style={{ color: '#fff' }}
+          to={ `/locations/${ id }` }
+        >
+          { name }
+        </Link>
       </Heading>
 
       { !minimized && (

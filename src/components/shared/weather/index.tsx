@@ -8,11 +8,12 @@ import { InfoBox } from './InfoBox';
 import * as Styled from './styles';
 
 type Props = {
-  onRemove?: () => void;
   id: string;
+  onRemove?: () => void;
 }
 
 export const Weather = ({
+  id,
   description,
   feelsLike,
   iconUrl,
@@ -20,11 +21,12 @@ export const Weather = ({
   min,
   name,
   onRemove,
-  id,
   temp,
   wind,
 }: Props & CommonProps & IconProps & WeatherProps) => {
   const [minimized, setMinimized] = useState<boolean>(true);
+
+  const maximize = () => setMinimized(false);
 
   const minimize = () => setMinimized(true);
 
@@ -32,6 +34,7 @@ export const Weather = ({
     <Styled.Weather role="article">
       <Styled.Content>
         <InfoBox
+          id={ id }
           description={ description }
           feelsLike={ feelsLike }
           max={ max }
@@ -45,9 +48,9 @@ export const Weather = ({
           description={ description }
           iconUrl={ iconUrl }
           minimized={ minimized }
+          onClick={ maximize }
           temp={ temp }
           text={ 'Details' }
-          id={ id }
         />
       </Styled.Content>
       { !minimized && (

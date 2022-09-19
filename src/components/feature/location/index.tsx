@@ -28,6 +28,7 @@ export const Location = ({ location, onRemove }: Props) => {
         <ErrorMessage>{ error.message }</ErrorMessage>
       ) : data ? (
         <Weather
+          id={ id }
           description={ data.description }
           feelsLike={ data.feels_like }
           iconUrl={ data.iconUrl }
@@ -37,7 +38,6 @@ export const Location = ({ location, onRemove }: Props) => {
           onRemove={ removeLocation }
           temp={ data.temp }
           wind={ data.wind }
-          id={ id }
         />
       ) : null }
     </div>

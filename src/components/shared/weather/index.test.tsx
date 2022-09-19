@@ -8,6 +8,7 @@ const setup = (jsx: ReactElement) =>
   ({ user: userEvent.setup(), ...render(jsx) });
 
 const props = {
+  id: '123',
   description: 'Light rain',
   feelsLike: 12,
   iconUrl: 'londonIcon.png',
@@ -17,7 +18,6 @@ const props = {
   onRemove: () => {},
   temp: 13,
   wind: 5,
-  id: 'id123',
 }
 
 it('renders properly on initial mount', () => {
