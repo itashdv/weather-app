@@ -5,20 +5,11 @@ import {
   createBrowserRouter,
   RouterProvider,
   Navigate,
-  useParams,
 } from 'react-router-dom';
 
 import App from './App';
-import { ErrorPage, Locations } from './components';
+import { ErrorPage, Locations, City } from './components';
 import './index.css';
-
-const Location = () => {
-  const { locationId } = useParams();
-
-  return (
-    <div>{ locationId }</div>
-  );
-}
 
 const router = createBrowserRouter([
   {
@@ -36,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'locations/:locationId',
-        element: <Location />,
+        element: <City />,
       },
     ],
   },
